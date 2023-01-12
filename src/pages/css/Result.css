@@ -1,7 +1,4 @@
 .App{
-    background-color: antiquewhite;
-    height: calc(var(--vh, 1vh) * 100);
-
     max-width: 1500px;
     margin: auto;
     padding-top: 6vh;
@@ -35,4 +32,22 @@ img {
 .SubTitle{
     font-size: 1.1em;
     margin-top: 0.6em;
+}
+
+.InfoArea{
+    width: 92vw;
+    margin-top: 3vh;
+    margin-left: 4vw;
+    text-align: left;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 3px;
+
+    border-radius: 10px;
+    background-color: rgb(238, 238, 238);
+    
+}
+
+.InfoList{
+    line-height: 1.4em;
 }
