@@ -19,3 +19,20 @@ img {
     margin:auto;
     top: 15vh;
 }
+
+.TitleArea{
+    width: 100vw;
+    height: auto;
+
+    margin-top: 20px;
+}
+
+.MainTitle{
+    font-size: 1.2em;
+    font-weight: bolder;
+}
+
+.SubTitle{
+    font-size: 1.1em;
+    margin-top: 0.6em;
+}

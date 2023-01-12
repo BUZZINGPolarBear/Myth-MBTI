@@ -8,7 +8,12 @@ function Result(){
                 <img src={characterResult[0].imgsrc}></img>
             </div>
             <div className="TitleArea">
-
+                <div className="MainTitle">
+                    {characterResult[0].title}
+                </div>
+                <div className="SubTitle">
+                    "{characterResult[0].subTitle}"
+                </div>
             </div>
         </div>
         
