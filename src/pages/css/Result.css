@@ -1,0 +1,21 @@
+.App{
+    background-color: antiquewhite;
+    height: calc(var(--vh, 1vh) * 100);
+
+    max-width: 1500px;
+    margin: auto;
+    padding-top: 6vh;
+}
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.TopImageArea{
+    width: 70vw;
+    height: 70vw;
+    max-width: 400px;
+    max-height: 400px;
+    margin:auto;
+    top: 15vh;
+}
