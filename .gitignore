@@ -24,3 +24,5 @@ yarn-error.log*
 
 # hide important files
 characterResult.js
+
+src/questions.js
