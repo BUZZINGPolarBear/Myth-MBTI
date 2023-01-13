@@ -17,25 +17,40 @@ function CharacterInfo(info){
         </div>
     )
 }
+
+function ShowTitleArea(characterIdx){
+    const characterIdxAsNum = Number(characterIdx.characterIdx);
+    
+    return(
+        <div className="TitleArea">
+            <div className="MainTitle">
+                {characterResult[characterIdxAsNum].title}
+            </div>
+            <div className="SubTitle">
+                "{characterResult[characterIdxAsNum].subTitle}"
+            </div>
+        </div>
+    )
+}
+
+function ShowCharacterImg(characterIdx){
+    const characterIdxAsNum = Number(characterIdx.characterIdx);
+    return(
+        <div className="TopImageArea">
+            <img src={characterResult[characterIdxAsNum].imgsrc} alt='character img'></img>
+        </div>
+    )
+}
+
 function Result(){
     return(
         <div className="App">
-            <div className="TopImageArea">
-                <img src={characterResult[0].imgsrc} alt='character img'></img>
-            </div>
+            <ShowCharacterImg characterIdx={0} />
             
-            <div className="TitleArea">
-                <div className="MainTitle">
-                    {characterResult[0].title}
-                </div>
-                <div className="SubTitle">
-                    "{characterResult[0].subTitle}"
-                </div>
-            </div>
+            <ShowTitleArea characterIdx={0} />
 
             <div className="InfoArea">
                 <CharacterInfo info={characterResult[0].info} />
-
             </div>
 
             
