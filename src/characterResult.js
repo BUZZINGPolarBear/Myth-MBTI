@@ -6,7 +6,7 @@ const characterResult = [
         name: '문도령',
         imgsrc: '/images/characters/sample.png',
         title: '상대를 기다리기만 하는 문도령',
-        subTitle: '어서 그건 그리하세',
+        subTitle: '당신 뜻대로 하겠소',
         info:[
             {
                 id:1,

@@ -129,13 +129,7 @@ img {
     padding-bottom: 5vh;
     
     top: 95vh;
-
-    
-    
-    /* top:5vh; */
-    
-
-    
+       
     background-color: #F2F2F2;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
@@ -150,8 +144,10 @@ img {
 
 .InnerStory{
     margin-top: 10vh;
-    line-height: 1.5em;
+    line-height: 1.6em;
     display: none;
+    text-align: left;
 
+    font-size: 1.1em;
     z-index: 999;
 }

@@ -89,13 +89,13 @@ function ShowMythHistory(){
             <div className="FullStoryTitle" onClick={onShowFullBtnClicked} ref={fullStoryTitle}>
                 <>{titleArrow} <br></br> {title}</>
             </div>
-            <div className="InnerStory" ref={showFullBtnClicked}>
-                {characterResult[0].story}
+            <div className="InnerStory" ref={showFullBtnClicked} dangerouslySetInnerHTML={{__html: characterResult[0].story}}>
+                
             </div>
         </div>  
     )
-      
 }
+
 function MinusList(characterIdx){
     const minusList = [];
 
@@ -134,7 +134,7 @@ function Result(){
                 </div>
                 <div id="OppositeArea">
                     <div className="SimilarOppositeTitle">반대 유형</div>
-                    <div className="SimilarOppositeContent">{characterResult[0].oppositTo}</div>
+                    <div className="SimilarOppositeContent" >{characterResult[0].oppositTo}</div>
                 </div>
             </div>      
              
