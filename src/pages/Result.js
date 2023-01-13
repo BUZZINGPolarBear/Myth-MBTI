@@ -96,9 +96,17 @@ function Result(){
                     <div className="SimilarOppositeTitle">반대 유형</div>
                     <div className="SimilarOppositeContent">{characterResult[0].oppositTo}</div>
                 </div>
-            </div>
-            
+            </div>      
+            <div className="FullMythStory" >
+                <div className="FullStoryTitle">
+                    ^<br></br>신화 이야기 더 자세히 보기    
+                </div>
+                <div className="InnerStory" onClick={console.log(1)}>
+                    {characterResult[0].story}
+                </div>
+            </div>     
         </div>
+        
         
     )
 }

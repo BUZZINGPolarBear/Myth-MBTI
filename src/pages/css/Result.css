@@ -2,6 +2,9 @@
     max-width: 1500px;
     margin: auto;
     padding-top: 2vh;
+    height: 105vh;
+
+    overflow: hidden;
 }
 img {
     max-width: 100%;
@@ -116,4 +119,39 @@ img {
 .SimilarOppositeContent{
     text-align: center;
     font-weight: bolder;
+}
+
+.FullMythStory{
+    position: absolute;
+    width: 90vw;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    padding-bottom: 5vh;
+    
+    top: 95vh;
+
+    
+    
+    /* top:5vh; */
+    
+
+    
+    background-color: #F2F2F2;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.FullStoryTitle{
+    width: 100%;
+    height: max-content;
+
+    font-size: bolder;
+}
+
+.InnerStory{
+    margin-top: 10vh;
+    line-height: 1.5em;
+    display: none;
+
+    z-index: 999;
 }
