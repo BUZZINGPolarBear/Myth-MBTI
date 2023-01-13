@@ -2,8 +2,7 @@ import {useRef, useState} from 'react';
 import characterResult from "../characterResult";
 import './css/Result.css';
 
-
-
+let characterId = 7;
 function CharacterInfo(info){
     const infoList = [];
 
@@ -59,7 +58,7 @@ function PlusList(characterIdx){
     )
 }
 
-function ShowMythHistory(){
+function ShowMythHistory(characterIdx){
     const showFullBtnClicked = useRef(null);
     const fullMythDiv = useRef(null);
     const fullStoryTitle = useRef(null);
@@ -89,7 +88,7 @@ function ShowMythHistory(){
             <div className="FullStoryTitle" onClick={onShowFullBtnClicked} ref={fullStoryTitle}>
                 <>{titleArrow} <br></br> {title}</>
             </div>
-            <div className="InnerStory" ref={showFullBtnClicked} dangerouslySetInnerHTML={{__html: characterResult[0].story}}>
+            <div className="InnerStory" ref={showFullBtnClicked} dangerouslySetInnerHTML={{__html: characterResult[characterId].story}}>
                 
             </div>
         </div>  
@@ -113,32 +112,32 @@ function MinusList(characterIdx){
 function Result(){
     return(
         <div className="App">
-            <ShowCharacterImg characterIdx={0} />
+            <ShowCharacterImg characterIdx={characterId} />
             
-            <ShowTitleArea characterIdx={0} />
+            <ShowTitleArea characterIdx={characterId} />
 
             <div className="InfoArea">
-                <CharacterInfo info={characterResult[0].info} />
+                <CharacterInfo info={characterResult[characterId].info} />
             </div>
 
             <div className="PlusMinusArea">
                     <div id="PlusTitle">장점</div>
-                    <PlusList characterIdx={characterResult[0].plus} />
+                    <PlusList characterIdx={characterResult[characterId].plus} />
                     <div id="MinusTitle">단점</div>
-                    <MinusList characterIdx={characterResult[0].minus} />
+                    <MinusList characterIdx={characterResult[characterId].minus} />
             </div>
             <div className="SimilarOppositeArea">
                 <div id="SimilarArea">
                     <div className="SimilarOppositeTitle">비슷한 유형</div>
-                    <div className="SimilarOppositeContent">{characterResult[0].similarTo}</div>
+                    <div className="SimilarOppositeContent">{characterResult[characterId].similarTo}</div>
                 </div>
                 <div id="OppositeArea">
                     <div className="SimilarOppositeTitle">반대 유형</div>
-                    <div className="SimilarOppositeContent" >{characterResult[0].oppositTo}</div>
+                    <div className="SimilarOppositeContent" >{characterResult[characterId].oppositTo}</div>
                 </div>
             </div>      
              
-             <ShowMythHistory />
+             <ShowMythHistory characterIdx={characterId} />
         </div>
         
         
