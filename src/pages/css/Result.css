@@ -77,4 +77,43 @@ img {
 
 .PlusMinusList{
     text-align: left;
+    list-style-type: none;
+    margin-top: 5px;
+}
+
+.SimilarOppositeArea{
+    display: flex;
+    justify-content: space-around;
+    width: 100vw;
+    height: fit-content;
+
+    margin-top: 10px;
+}
+
+#SimilarArea{
+    width: 40%;
+    height: fit-content;
+    text-align: center;
+}
+
+#OppositeArea{
+    width: 40%;
+    height: fit-content;
+    text-align: center;
+}
+
+.SimilarOppositeTitle{
+    width: 95%;
+    background-color: #F2F2F2;
+    padding: 5px 10px;
+
+    font-size: 1.1em;
+    
+
+    border-radius: 15px;
+}
+
+.SimilarOppositeContent{
+    text-align: center;
+    font-weight: bolder;
 }

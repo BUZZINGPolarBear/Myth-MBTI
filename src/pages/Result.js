@@ -63,7 +63,7 @@ function MinusList(characterIdx){
         minusList.push(<li key={property.id}> {property.content}</li>);
     }
     return(
-        <ul className="PlusMinusList">
+        <ul className="PlusMinusList" style={{textAlign: 'right'}}>
             {minusList}
         </ul>
 
@@ -86,8 +86,17 @@ function Result(){
                     <PlusList characterIdx={characterResult[0].plus} />
                     <div id="MinusTitle">단점</div>
                     <MinusList characterIdx={characterResult[0].minus} />
+            </div>
+            <div className="SimilarOppositeArea">
+                <div id="SimilarArea">
+                    <div className="SimilarOppositeTitle">비슷한 유형</div>
+                    <div className="SimilarOppositeContent">{characterResult[0].similarTo}</div>
                 </div>
-
+                <div id="OppositeArea">
+                    <div className="SimilarOppositeTitle">반대 유형</div>
+                    <div className="SimilarOppositeContent">{characterResult[0].oppositTo}</div>
+                </div>
+            </div>
             
         </div>
         
