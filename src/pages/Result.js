@@ -46,12 +46,26 @@ function PlusList(characterIdx){
     const plusList = [];
 
     for(var property of characterIdx.characterIdx){
-        plusList.push(<div> {property.content}</div>);
+        plusList.push(<li key={property.id}> {property.content} </li>);
     }
     return(
-        <div id="PlusList">
+        <ul className="PlusMinusList">
             {plusList}
-        </div>
+        </ul>
+
+    )
+}
+
+function MinusList(characterIdx){
+    const minusList = [];
+
+    for(var property of characterIdx.characterIdx){
+        minusList.push(<li key={property.id}> {property.content}</li>);
+    }
+    return(
+        <ul className="PlusMinusList">
+            {minusList}
+        </ul>
 
     )
 }
@@ -70,6 +84,8 @@ function Result(){
             <div className="PlusMinusArea">
                     <div id="PlusTitle">장점</div>
                     <PlusList characterIdx={characterResult[0].plus} />
+                    <div id="MinusTitle">단점</div>
+                    <MinusList characterIdx={characterResult[0].minus} />
                 </div>
 
             

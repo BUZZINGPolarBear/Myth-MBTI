@@ -1,7 +1,7 @@
 .App{
     max-width: 1500px;
     margin: auto;
-    padding-top: 6vh;
+    padding-top: 2vh;
 }
 img {
     max-width: 100%;
@@ -14,7 +14,7 @@ img {
     max-width: 400px;
     max-height: 400px;
     margin:auto;
-    top: 15vh;
+    top: 10vh;
 }
 
 .TitleArea{
@@ -58,7 +58,7 @@ img {
     height: auto;
     margin-top: 15px;
 
-    background-color: antiquewhite;
+    /* background-color: rgba(250, 235, 215, 0.618); */
 }
 
 #PlusTitle{
@@ -66,4 +66,15 @@ img {
     text-align: left;
     font-size: 1.2em;
     font-weight: bolder;
+}
+
+#MinusTitle{
+    width: 100%;
+    text-align: right;
+    font-size: 1.2em;
+    font-weight: bolder;
+}
+
+.PlusMinusList{
+    text-align: left;
 }
