@@ -48,7 +48,7 @@ function PlusList(characterIdx){
     const plusList = [];
 
     for(var property of characterIdx.characterIdx){
-        plusList.push(<div> {property.content} </div>);
+        plusList.push(<div key={property.id}> {property.content} </div>);
     }
     return(
         <div className="PlusMinusList">

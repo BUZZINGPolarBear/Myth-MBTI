@@ -1,6 +1,7 @@
 // import logo from './logo.svg';
 import {Route} from "react-router-dom";
 import Result from "./pages/Result";
+import Test from "./pages/TestPage";
 import LandingPage from "./pages/LandingPage";
 import './App.css';
 import MainHeader from "./pages/MainHeader";
@@ -19,6 +20,9 @@ function App() {
     <div>
       <Route exact path="/result">
         <Result />
+      </Route>
+      <Route exact path="/test">
+        <Test />
       </Route>
       {/* <MainHeader /> */}
       {/* <LandingPage /> */}

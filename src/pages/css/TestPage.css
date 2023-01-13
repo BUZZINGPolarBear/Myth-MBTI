@@ -1,0 +1,11 @@
+.App{
+    max-width: 1500px;
+    margin: auto;
+    padding-top: 2vh;
+    height: 40vh;
+    margin-top: 20vh;
+
+    background-color: antiquewhite;
+
+    overflow: hidden;
+}
