@@ -1,5 +1,8 @@
+import {useRef, useState} from 'react';
 import characterResult from "../characterResult";
 import './css/Result.css';
+
+
 
 function CharacterInfo(info){
     const infoList = [];
@@ -56,6 +59,43 @@ function PlusList(characterIdx){
     )
 }
 
+function ShowMythHistory(){
+    const showFullBtnClicked = useRef(null);
+    const fullMythDiv = useRef(null);
+    const fullStoryTitle = useRef(null);
+    const [showFullHistoryMsg, setShowFullHistoryMsg] = useState(`더보기`);
+    var titleArrow = '^';
+    var title = '신화 이야기 더 자세히 보기';
+
+    const onShowFullBtnClicked = () =>{
+        if(showFullBtnClicked.current.style.display === 'none'){
+            setShowFullHistoryMsg('접기');
+            fullMythDiv.current.style.top = '5vh';
+            showFullBtnClicked.current.style.display = 'block';
+        }
+        else{
+            setShowFullHistoryMsg('더보기');
+            fullMythDiv.current.style.top = '95vh';
+            showFullBtnClicked.current.style.display = 'none';
+        }
+    } 
+
+    if(showFullHistoryMsg === '접기'){
+        titleArrow = 'v';
+        title = '접기';
+    }
+    return(
+        <div className="FullMythStory" ref={fullMythDiv} >
+            <div className="FullStoryTitle" onClick={onShowFullBtnClicked} ref={fullStoryTitle}>
+                <>{titleArrow} <br></br> {title}</>
+            </div>
+            <div className="InnerStory" ref={showFullBtnClicked}>
+                {characterResult[0].story}
+            </div>
+        </div>  
+    )
+      
+}
 function MinusList(characterIdx){
     const minusList = [];
 
@@ -97,14 +137,8 @@ function Result(){
                     <div className="SimilarOppositeContent">{characterResult[0].oppositTo}</div>
                 </div>
             </div>      
-            <div className="FullMythStory" >
-                <div className="FullStoryTitle">
-                    ^<br></br>신화 이야기 더 자세히 보기    
-                </div>
-                <div className="InnerStory" onClick={console.log(1)}>
-                    {characterResult[0].story}
-                </div>
-            </div>     
+             
+             <ShowMythHistory />
         </div>
         
         
