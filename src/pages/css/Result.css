@@ -1,0 +1,153 @@
+.App{
+    max-width: 1500px;
+    margin: auto;
+    padding-top: 2vh;
+    height: 105vh;
+
+    overflow: hidden;
+}
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.TopImageArea{
+    width: 70vw;
+    height: 70vw;
+    max-width: 400px;
+    max-height: 400px;
+    margin:auto;
+    top: 10vh;
+}
+
+.TitleArea{
+    width: 100vw;
+    height: auto;
+
+    margin-top: 20px;
+}
+
+.MainTitle{
+    font-size: 1.2em;
+    font-weight: bolder;
+}
+
+.SubTitle{
+    font-size: 1.1em;
+    margin-top: 0.6em;
+}
+
+.InfoArea{
+    width: 92vw;
+    margin-top: 3vh;
+    margin-left: 4vw;
+    text-align: left;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 3px;
+
+    border-radius: 10px;
+    background-color: rgb(238, 238, 238);
+    
+}
+
+.InfoList{
+    line-height: 1.4em;
+}
+
+.PlusMinusArea{
+    width: 92vw;
+    margin-left: 4vw;
+    height: auto;
+    margin-top: 15px;
+
+    /* background-color: rgba(250, 235, 215, 0.618); */
+}
+
+#PlusTitle{
+    width: 100%;
+    text-align: left;
+    font-size: 1.2em;
+    font-weight: bolder;
+}
+
+#MinusTitle{
+    width: 100%;
+    text-align: right;
+    font-size: 1.2em;
+    font-weight: bolder;
+}
+
+.PlusMinusList{
+    text-align: left;
+    list-style-type: none;
+    margin-top: 5px;
+}
+
+.SimilarOppositeArea{
+    display: flex;
+    justify-content: space-around;
+    width: 100vw;
+    height: fit-content;
+
+    margin-top: 10px;
+}
+
+#SimilarArea{
+    width: 40%;
+    height: fit-content;
+    text-align: center;
+}
+
+#OppositeArea{
+    width: 40%;
+    height: fit-content;
+    text-align: center;
+}
+
+.SimilarOppositeTitle{
+    width: 95%;
+    background-color: #F2F2F2;
+    padding: 5px 10px;
+
+    font-size: 1.1em;
+    
+
+    border-radius: 15px;
+}
+
+.SimilarOppositeContent{
+    text-align: center;
+    font-weight: bolder;
+}
+
+.FullMythStory{
+    position: absolute;
+    width: 90vw;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    padding-bottom: 5vh;
+    
+    top: 95vh;
+       
+    background-color: #F2F2F2;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.FullStoryTitle{
+    width: 100%;
+    height: max-content;
+
+    font-size: bolder;
+}
+
+.InnerStory{
+    margin-top: 10vh;
+    line-height: 1.6em;
+    display: none;
+    text-align: left;
+
+    font-size: 1.1em;
+    z-index: 999;
+}
