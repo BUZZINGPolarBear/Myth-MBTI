@@ -48,12 +48,26 @@ function PlusList(characterIdx){
     const plusList = [];
 
     for(var property of characterIdx.characterIdx){
-        plusList.push(<li key={property.id}> {property.content} </li>);
+        plusList.push(<div> {property.content} </div>);
     }
     return(
-        <ul className="PlusMinusList">
+        <div className="PlusMinusList">
             {plusList}
-        </ul>
+        </div>
+
+    )
+}
+
+function MinusList(characterIdx){
+    const minusList = [];
+
+    for(var property of characterIdx.characterIdx){
+        minusList.push(<div key={property.id}> {property.content}</div>);
+    }
+    return(
+        <div className="PlusMinusList">
+            {minusList}
+        </div>
 
     )
 }
@@ -95,19 +109,7 @@ function ShowMythHistory(characterIdx){
     )
 }
 
-function MinusList(characterIdx){
-    const minusList = [];
 
-    for(var property of characterIdx.characterIdx){
-        minusList.push(<li key={property.id}> {property.content}</li>);
-    }
-    return(
-        <ul className="PlusMinusList" style={{textAlign: 'right'}}>
-            {minusList}
-        </ul>
-
-    )
-}
 
 function Result(){
     return(

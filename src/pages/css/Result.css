@@ -33,6 +33,9 @@ img {
 }
 
 .SubTitle{
+    width: 90vw;
+    margin: auto;
+
     font-size: 1.1em;
     margin-top: 0.6em;
 }
@@ -66,20 +69,21 @@ img {
 
 #PlusTitle{
     width: 100%;
-    text-align: left;
+    text-align: center;
     font-size: 1.2em;
     font-weight: bolder;
 }
 
 #MinusTitle{
     width: 100%;
-    text-align: right;
+    text-align: center;
     font-size: 1.2em;
     font-weight: bolder;
 }
 
 .PlusMinusList{
-    text-align: left;
+    width: 90vw;
+    text-align: center;
     list-style-type: none;
     margin-top: 5px;
 }
@@ -90,7 +94,7 @@ img {
     width: 100vw;
     height: fit-content;
 
-    margin-top: 10px;
+    margin-top: 17px;
 }
 
 #SimilarArea{
