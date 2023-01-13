@@ -51,3 +51,19 @@ img {
 .InfoList{
     line-height: 1.4em;
 }
+
+.PlusMinusArea{
+    width: 92vw;
+    margin-left: 4vw;
+    height: auto;
+    margin-top: 15px;
+
+    background-color: antiquewhite;
+}
+
+#PlusTitle{
+    width: 100%;
+    text-align: left;
+    font-size: 1.2em;
+    font-weight: bolder;
+}

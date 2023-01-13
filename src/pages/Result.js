@@ -42,6 +42,20 @@ function ShowCharacterImg(characterIdx){
     )
 }
 
+function PlusList(characterIdx){
+    const plusList = [];
+
+    for(var property of characterIdx.characterIdx){
+        plusList.push(<div> {property.content}</div>);
+    }
+    return(
+        <div id="PlusList">
+            {plusList}
+        </div>
+
+    )
+}
+
 function Result(){
     return(
         <div className="App">
@@ -52,6 +66,11 @@ function Result(){
             <div className="InfoArea">
                 <CharacterInfo info={characterResult[0].info} />
             </div>
+
+            <div className="PlusMinusArea">
+                    <div id="PlusTitle">장점</div>
+                    <PlusList characterIdx={characterResult[0].plus} />
+                </div>
 
             
         </div>
