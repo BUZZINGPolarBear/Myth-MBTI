@@ -5,27 +5,38 @@ import './css/TestPage.css';
 
 
 function Test(){
+    let [questionNumber, setQuestionNumber] = useState(0);
+    const percentageBar = useRef(null);
+
+    const firstAnswerClicked = () => {
+        setQuestionNumber(questionNumber+1);
+        percentageBar.current.style.width = `${(questionNumber+1)*8.3}%`;
+    }
+    const secondAnswerClicked = () => {
+        setQuestionNumber(questionNumber+1);
+        percentageBar.current.style.width = `${(questionNumber+1)*8.3}%`;
+    }
     return(
         <div className='App'>
             <div className='MainQuestion'>
-                <div className='Question'>hello world!</div>
+                <div className='Question'>{questions.questions[questionNumber].question}</div>
             </div>
 
             <div className='AnswerArea'>
-                <div className='FirstAnswer'>
-                    AAA
+                <div className='FirstAnswer' onClick={firstAnswerClicked}>
+                    {questions.questions[questionNumber].firstAnswer}
                 </div>
-                <div className='SecondAnswer'>
-                    BBB
+                <div className='SecondAnswer' onClick={secondAnswerClicked}>
+                {questions.questions[questionNumber].secondAnswer}
                 </div>
             </div>
 
             <div className='PercentageArea'>
                 <div className='PercentageBar'></div>
-                <div className='RealPercentage'></div>
+                <div className='RealPercentage' ref={percentageBar}></div>
                 
             </div>
-            <div className='Percentage'>1/12</div>
+            <div className='Percentage'>{questionNumber+1}/12</div>
         </div>   
     )
 }

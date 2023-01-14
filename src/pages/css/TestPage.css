@@ -86,6 +86,8 @@
 
     border-radius: 10px;
     background-color: black;
+
+    transition: width 0.2s
 }
 
 .Percentage{
