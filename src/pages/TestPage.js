@@ -7,8 +7,19 @@ import './css/TestPage.css';
 function Test(){
     return(
         <div className='App'>
-            hello world!
-        </div>
+            <div className='MainQuestion'>
+                <div className='Question'>hello world!</div>
+            </div>
+
+            <div className='AnswerArea'>
+                <div className='FirstAnswer'>
+                    AAA
+                </div>
+                <div className='SecondAnswer'>
+                    BBB
+                </div>
+            </div>
+        </div>   
     )
 }
 
