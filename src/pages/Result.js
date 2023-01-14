@@ -1,6 +1,6 @@
 import {useRef, useState} from 'react';
 import characterResult from "../characterResult";
-import './css/Result.css';
+import styles from './css/Result.module.css';
 
 let characterId = 7;
 function CharacterInfo(info){
@@ -10,9 +10,8 @@ function CharacterInfo(info){
         infoList.push(<li key={property.id}>{property.content}</li>)
     }
     
-
     return(
-        <div className="InfoList">
+        <div className={styles.InfoList}>
             <ul>
                 {infoList}
             </ul>  
@@ -24,11 +23,11 @@ function ShowTitleArea(characterIdx){
     const characterIdxAsNum = Number(characterIdx.characterIdx);
     
     return(
-        <div className="TitleArea">
-            <div className="MainTitle">
+        <div className={styles.TitleArea}>
+            <div className={styles.MainTitle}>
                 {characterResult[characterIdxAsNum].title}
             </div>
-            <div className="SubTitle">
+            <div className={styles.SubTitle}>
                 "{characterResult[characterIdxAsNum].subTitle}"
             </div>
         </div>
@@ -38,7 +37,7 @@ function ShowTitleArea(characterIdx){
 function ShowCharacterImg(characterIdx){
     const characterIdxAsNum = Number(characterIdx.characterIdx);
     return(
-        <div className="TopImageArea">
+        <div className={styles.TopImageArea}>
             <img src={characterResult[characterIdxAsNum].imgsrc} alt='character img'></img>
         </div>
     )
@@ -51,7 +50,7 @@ function PlusList(characterIdx){
         plusList.push(<div key={property.id}> {property.content} </div>);
     }
     return(
-        <div className="PlusMinusList">
+        <div className={styles.PlusMinusList}>
             {plusList}
         </div>
 
@@ -65,7 +64,7 @@ function MinusList(characterIdx){
         minusList.push(<div key={property.id}> {property.content}</div>);
     }
     return(
-        <div className="PlusMinusList">
+        <div className={styles.PlusMinusList}>
             {minusList}
         </div>
 
@@ -98,11 +97,11 @@ function ShowMythHistory(characterIdx){
         title = '접기';
     }
     return(
-        <div className="FullMythStory" ref={fullMythDiv} >
-            <div className="FullStoryTitle" onClick={onShowFullBtnClicked} ref={fullStoryTitle}>
+        <div className={styles.FullMythStory} ref={fullMythDiv} >
+            <div className={styles.FullStoryTitle} onClick={onShowFullBtnClicked} ref={fullStoryTitle}>
                 <>{titleArrow} <br></br> {title}</>
             </div>
-            <div className="InnerStory" ref={showFullBtnClicked} dangerouslySetInnerHTML={{__html: characterResult[characterId].story}}>
+            <div className={styles.InnerStory} ref={showFullBtnClicked} dangerouslySetInnerHTML={{__html: characterResult[characterId].story}}>
                 
             </div>
         </div>  
@@ -113,29 +112,29 @@ function ShowMythHistory(characterIdx){
 
 function Result(){
     return(
-        <div className="App">
+        <div className={styles.App}>
             <ShowCharacterImg characterIdx={characterId} />
             
             <ShowTitleArea characterIdx={characterId} />
 
-            <div className="InfoArea">
+            <div className={styles.InfoArea}>
                 <CharacterInfo info={characterResult[characterId].info} />
             </div>
 
-            <div className="PlusMinusArea">
-                    <div id="PlusTitle">장점</div>
+            <div className={styles.PlusMinusArea}>
+                    <div id={styles.PlusTitle}>장점</div>
                     <PlusList characterIdx={characterResult[characterId].plus} />
-                    <div id="MinusTitle">단점</div>
+                    <div id={styles.MinusTitle}>단점</div>
                     <MinusList characterIdx={characterResult[characterId].minus} />
             </div>
-            <div className="SimilarOppositeArea">
-                <div id="SimilarArea">
-                    <div className="SimilarOppositeTitle">비슷한 유형</div>
-                    <div className="SimilarOppositeContent">{characterResult[characterId].similarTo}</div>
+            <div className={styles.SimilarOppositeArea}>
+                <div id={styles.SimilarArea}>
+                    <div className={styles.SimilarOppositeTitle}>비슷한 유형</div>
+                    <div className={styles.SimilarOppositeContent}>{characterResult[characterId].similarTo}</div>
                 </div>
-                <div id="OppositeArea">
-                    <div className="SimilarOppositeTitle">반대 유형</div>
-                    <div className="SimilarOppositeContent" >{characterResult[characterId].oppositTo}</div>
+                <div id={styles.OppositeArea}>
+                    <div className={styles.SimilarOppositeTitle}>반대 유형</div>
+                    <div className={styles.SimilarOppositeContent}>{characterResult[characterId].oppositTo}</div>
                 </div>
             </div>      
              

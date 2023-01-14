@@ -2,7 +2,7 @@
     max-width: 1500px;
     margin: auto;
     padding-top: 2vh;
-    height: 105vh;
+    height: 102vh;
 
     overflow: hidden;
 }
@@ -30,12 +30,14 @@ img {
 .MainTitle{
     font-size: 1.2em;
     font-weight: bolder;
+
+    text-align: center;
 }
 
 .SubTitle{
     width: 90vw;
     margin: auto;
-
+    text-align: center;
     font-size: 1.1em;
     margin-top: 0.6em;
 }
@@ -142,7 +144,7 @@ img {
 .FullStoryTitle{
     width: 100%;
     height: max-content;
-
+    text-align: center;
     font-size: bolder;
 }
 
