@@ -19,6 +19,13 @@ function Test(){
                     BBB
                 </div>
             </div>
+
+            <div className='PercentageArea'>
+                <div className='PercentageBar'></div>
+                <div className='RealPercentage'></div>
+                
+            </div>
+            <div className='Percentage'>1/12</div>
         </div>   
     )
 }
