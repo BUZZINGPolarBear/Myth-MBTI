@@ -11,11 +11,11 @@ function getCharacterId(){
     let b = Number(localStorage.getItem('b'));
     let realistic = Number(localStorage.getItem('realistic'));
     let hs = Number(localStorage.getItem('hs'));
-    let fixed = localStorage.getItem('fixed');
-    let e = localStorage.getItem('e');
-    let n = localStorage.getItem('n');
-    let t = localStorage.getItem('t');
-    let p = localStorage.getItem('p');
+    let fixed = Number(localStorage.getItem('fixed'));
+    let e = Number(localStorage.getItem('e'));
+    let n = Number(localStorage.getItem('n'));
+    let t = Number(localStorage.getItem('t'));
+    let p = Number(localStorage.getItem('p'));
 
     let threshold = (hj+jj+b+realistic+hs)/5;
 
@@ -29,6 +29,9 @@ function getCharacterId(){
     if(jj>threshold && hs<-threshold) return 0;
     if(hs > threshold && realistic < -threshold) return 6;
     if(hs>threshold && realistic>threshold) return 7;
+
+    let mbtiThreshold = (e+n+t+p)/4;
+    
 
     return 8;
 

@@ -153,6 +153,7 @@ img {
     line-height: 1.6em;
     display: none;
     text-align: left;
+    word-break: keep-all;
 
     font-size: 1.1em;
     z-index: 999;
