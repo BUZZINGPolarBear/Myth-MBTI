@@ -1,7 +1,9 @@
 import {useRef, useState} from 'react';
 import characterResult from "../characterResult";
 import styles from './css/Result.module.css';
+import styled from 'styled-components';
 import questions from "../questions";
+import {BrowserView, MobileView, isBrowser, isMobile} from "react-device-detect";
 
 let characterId = getCharacterId();
 
@@ -40,10 +42,6 @@ function getCharacterId(){
     if(t<0 && p<0) return 7;
 
     return fixed;
-
-
-    return 8;
-
 }
 function CharacterInfo(info){
     const infoList = [];
@@ -138,53 +136,103 @@ function ShowMythHistory(characterIdx){
         titleArrow = 'v';
         title = '접기';
     }
-    return(
-        <div className={styles.FullMythStory} ref={fullMythDiv} >
-            <div className={styles.FullStoryTitle} onClick={onShowFullBtnClicked} ref={fullStoryTitle}>
-                <>{titleArrow} <br></br> {title}</>
-            </div>
-            <div className={styles.InnerStory} ref={showFullBtnClicked} dangerouslySetInnerHTML={{__html: characterResult[characterId].story}}>
-                
-            </div>
-        </div>  
-    )
+    if(isMobile){
+        return(
+            <div className={styles.FullMythStory} ref={fullMythDiv} >
+                <div className={styles.FullStoryTitle} onClick={onShowFullBtnClicked} ref={fullStoryTitle}>
+                    <>{titleArrow} <br></br> {title}</>
+                </div>
+                <div className={styles.InnerStory} ref={showFullBtnClicked} dangerouslySetInnerHTML={{__html: characterResult[characterId].story}}>
+                    
+                </div>
+            </div>  
+        )
+    }
+
+    if(isBrowser){
+        return(
+            <div className={styles.BrowserFullMythStory} ref={fullMythDiv} >
+                <div className={styles.FullStoryTitle} onClick={onShowFullBtnClicked} ref={fullStoryTitle}>
+                    <>{titleArrow} <br></br> {title}</>
+                </div>
+                <div className={styles.InnerStory} ref={showFullBtnClicked} dangerouslySetInnerHTML={{__html: characterResult[characterId].story}}>
+                    
+                </div>
+            </div>  
+        )
+    }
+    
 }
 
 
 
 function Result(){
-    return(
-        <div className={styles.App}>
-            <ShowCharacterImg characterIdx={characterId} />
-            
-            <ShowTitleArea characterIdx={characterId} />
-
-            <div className={styles.InfoArea}>
-                <CharacterInfo info={characterResult[characterId].info} />
-            </div>
-
-            <div className={styles.PlusMinusArea}>
-                    <div id={styles.PlusTitle}>장점</div>
-                    <PlusList characterIdx={characterResult[characterId].plus} />
-                    <div id={styles.MinusTitle}>단점</div>
-                    <MinusList characterIdx={characterResult[characterId].minus} />
-            </div>
-            <div className={styles.SimilarOppositeArea}>
-                <div id={styles.SimilarArea}>
-                    <div className={styles.SimilarOppositeTitle}>비슷한 유형</div>
-                    <div className={styles.SimilarOppositeContent}>{characterResult[characterId].similarTo}</div>
+    if(isMobile){
+        return(
+            <div className={styles.App}>
+                <ShowCharacterImg characterIdx={characterId} />
+                
+                <ShowTitleArea characterIdx={characterId} />
+    
+                <div className={styles.InfoArea}>
+                    <CharacterInfo info={characterResult[characterId].info} />
                 </div>
-                <div id={styles.OppositeArea}>
-                    <div className={styles.SimilarOppositeTitle}>반대 유형</div>
-                    <div className={styles.SimilarOppositeContent}>{characterResult[characterId].oppositTo}</div>
+    
+                <div className={styles.PlusMinusArea}>
+                        <div id={styles.PlusTitle}>장점</div>
+                        <PlusList characterIdx={characterResult[characterId].plus} />
+                        <div id={styles.MinusTitle}>단점</div>
+                        <MinusList characterIdx={characterResult[characterId].minus} />
                 </div>
-            </div>      
-             
-             <ShowMythHistory characterIdx={characterId} />
-        </div>
-        
-        
-    )
+                <div className={styles.SimilarOppositeArea}>
+                    <div id={styles.SimilarArea}>
+                        <div className={styles.SimilarOppositeTitle}>비슷한 유형</div>
+                        <div className={styles.SimilarOppositeContent}>{characterResult[characterId].similarTo}</div>
+                    </div>
+                    <div id={styles.OppositeArea}>
+                        <div className={styles.SimilarOppositeTitle}>반대 유형</div>
+                        <div className={styles.SimilarOppositeContent}>{characterResult[characterId].oppositTo}</div>
+                    </div>
+                </div>      
+                 
+                 <ShowMythHistory characterIdx={characterId} />
+            </div>
+        )
+    }
+    if(isBrowser){
+        return(
+            <div className={styles.BrowserApp}>
+                <ShowCharacterImg characterIdx={characterId} />
+                
+                <ShowTitleArea characterIdx={characterId} />
+    
+                <div className={styles.InfoArea}>
+                    <CharacterInfo info={characterResult[characterId].info} />
+                </div>
+    
+                <div className={styles.PlusMinusArea}>
+                        <div id={styles.PlusTitle}>장점</div>
+                        <PlusList characterIdx={characterResult[characterId].plus} />
+                        <div id={styles.MinusTitle}>단점</div>
+                        <MinusList characterIdx={characterResult[characterId].minus} />
+                </div>
+                <div className={styles.SimilarOppositeArea}>
+                    <div id={styles.SimilarArea}>
+                        <div className={styles.SimilarOppositeTitle}>비슷한 유형</div>
+                        <div className={styles.SimilarOppositeContent}>{characterResult[characterId].similarTo}</div>
+                    </div>
+                    <div id={styles.OppositeArea}>
+                        <div className={styles.SimilarOppositeTitle}>반대 유형</div>
+                        <div className={styles.SimilarOppositeContent}>{characterResult[characterId].oppositTo}</div>
+                    </div>
+                </div>      
+                 
+                 <ShowMythHistory characterIdx={characterId} />
+            </div>
+        )
+    }
+
+    
 }
 
 export default Result;
