@@ -30,8 +30,17 @@ function getCharacterId(){
     if(hs > threshold && realistic < -threshold) return 6;
     if(hs>threshold && realistic>threshold) return 7;
 
-    let mbtiThreshold = (e+n+t+p)/4;
-    
+    if(n>0 && p>0) return 0;
+    if(e<0 && p>0) return 1;
+    if(e>0 && p<0) return 2;
+    if(n<0 && p<0) return 3;
+    if(n<0 && t>0) return 4;
+    if(t<0 && p>0) return 5;
+    if(n>0 && t<0) return 6;
+    if(t<0 && p<0) return 7;
+
+    return fixed;
+
 
     return 8;
 
