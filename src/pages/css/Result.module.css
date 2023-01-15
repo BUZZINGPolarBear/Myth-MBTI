@@ -155,9 +155,7 @@ img {
 }
 .BrowserFullMythStory{
     position: absolute;
-    width: 54vw;
-    margin-left: 5vw;
-    margin-right: 5vw;
+    width: 60vw;
     padding-bottom: 5vh;
     
     cursor: pointer;
@@ -176,6 +174,18 @@ img {
 }
 
 .InnerStory{
+    margin-top: 10vh;
+    line-height: 1.6em;
+    display: none;
+    text-align: left;
+    word-break: keep-all;
+
+    font-size: 1.1em;
+    z-index: 999;
+}
+
+.BrowserInnerStory{
+    min-height: 100vh;
     margin-top: 10vh;
     line-height: 1.6em;
     display: none;
