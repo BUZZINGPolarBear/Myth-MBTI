@@ -94,7 +94,6 @@ function PlusList(characterIdx){
         <div className={styles.PlusMinusList}>
             {plusList}
         </div>
-
     )
 }
 
@@ -169,11 +168,7 @@ function ShowMythHistory(){
     
 }
 
-
-
 function Result(){
-    
-
     if(isMobile){
         return(
             <div className={styles.App}>
