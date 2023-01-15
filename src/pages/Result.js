@@ -21,8 +21,6 @@ function getCharacterId(){
 
     let threshold = (hj+jj+b+realistic+hs)/5;
 
-    console.log(threshold);
-
     if(hj > threshold && hs > threshold) return 2;
     if(hj == 0 && hs == 0) return 3;
     if(jj>threshold && realistic>threshold) return 4;
@@ -111,10 +109,12 @@ function MinusList(characterIdx){
     )
 }
 
-function ShowMythHistory(characterIdx){
+function ShowMythHistory(){
     const showFullBtnClicked = useRef(null);
     const fullMythDiv = useRef(null);
     const fullStoryTitle = useRef(null);
+    // const appBackground = useRef(null);
+
     const [showFullHistoryMsg, setShowFullHistoryMsg] = useState(`더보기`);
     var titleArrow = '^';
     var title = '신화 이야기 더 자세히 보기';
@@ -124,10 +124,12 @@ function ShowMythHistory(characterIdx){
             setShowFullHistoryMsg('접기');
             fullMythDiv.current.style.top = '5vh';
             showFullBtnClicked.current.style.display = 'block';
+            // appBackground.current.style.backgroundColor = 'rgba(0,0,0,0.5)';
         }
         else{
             setShowFullHistoryMsg('더보기');
-            fullMythDiv.current.style.top = '95vh';
+            if(isMobile)fullMythDiv.current.style.top = '95vh';
+            if(isBrowser)fullMythDiv.current.style.top = '100vh';
             showFullBtnClicked.current.style.display = 'none';
         }
     } 
@@ -167,6 +169,8 @@ function ShowMythHistory(characterIdx){
 
 
 function Result(){
+    
+
     if(isMobile){
         return(
             <div className={styles.App}>
@@ -195,13 +199,22 @@ function Result(){
                     </div>
                 </div>      
                  
-                 <ShowMythHistory characterIdx={characterId} />
+                 <ShowMythHistory />
             </div>
         )
     }
     if(isBrowser){
+        const BrowserApp = styled.div`
+            width: 60vw;
+            margin: auto;
+            padding-top: 2vh;
+            height: 102vh;
+        
+            overflow: hidden;
+        `
+
         return(
-            <div className={styles.BrowserApp}>
+            <BrowserApp>
                 <ShowCharacterImg characterIdx={characterId} />
                 
                 <ShowTitleArea characterIdx={characterId} />
@@ -227,8 +240,8 @@ function Result(){
                     </div>
                 </div>      
                  
-                 <ShowMythHistory characterIdx={characterId} />
-            </div>
+                 <ShowMythHistory />
+            </BrowserApp>
         )
     }
 

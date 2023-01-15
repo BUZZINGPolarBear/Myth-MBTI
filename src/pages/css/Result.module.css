@@ -54,7 +54,7 @@ img {
 }
 
 .InfoArea{
-    width: 92vw;
+    width: 90%;
     margin-top: 3vh;
     margin-left: 4vw;
     text-align: left;
@@ -144,6 +144,8 @@ img {
     margin-left: 5vw;
     margin-right: 5vw;
     padding-bottom: 5vh;
+
+    cursor: pointer;
     
     top: 95vh;
        
@@ -158,11 +160,12 @@ img {
     margin-right: 5vw;
     padding-bottom: 5vh;
     
+    cursor: pointer;
+
     top: 100vh;
        
     background-color: #F2F2F2;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+    border-radius: 10px;
 }
 
 .FullStoryTitle{
