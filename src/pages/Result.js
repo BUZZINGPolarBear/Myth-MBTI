@@ -1,7 +1,9 @@
 import {useRef, useState} from 'react';
 import characterResult from "../characterResult";
 import styles from './css/Result.module.css';
+import styled from 'styled-components';
 import questions from "../questions";
+import {BrowserView, MobileView, isBrowser, isMobile} from "react-device-detect";
 
 let characterId = getCharacterId();
 
@@ -19,8 +21,6 @@ function getCharacterId(){
 
     let threshold = (hj+jj+b+realistic+hs)/5;
 
-    console.log(threshold);
-
     if(hj > threshold && hs > threshold) return 2;
     if(hj == 0 && hs == 0) return 3;
     if(jj>threshold && realistic>threshold) return 4;
@@ -30,11 +30,16 @@ function getCharacterId(){
     if(hs > threshold && realistic < -threshold) return 6;
     if(hs>threshold && realistic>threshold) return 7;
 
-    let mbtiThreshold = (e+n+t+p)/4;
-    
+    if(n>0 && p>0) return 0;
+    if(e<0 && p>0) return 1;
+    if(e>0 && p<0) return 2;
+    if(n<0 && p<0) return 3;
+    if(n<0 && t>0) return 4;
+    if(t<0 && p>0) return 5;
+    if(n>0 && t<0) return 6;
+    if(t<0 && p<0) return 7;
 
-    return 8;
-
+    return fixed;
 }
 function CharacterInfo(info){
     const infoList = [];
@@ -104,10 +109,12 @@ function MinusList(characterIdx){
     )
 }
 
-function ShowMythHistory(characterIdx){
+function ShowMythHistory(){
     const showFullBtnClicked = useRef(null);
     const fullMythDiv = useRef(null);
     const fullStoryTitle = useRef(null);
+    // const appBackground = useRef(null);
+
     const [showFullHistoryMsg, setShowFullHistoryMsg] = useState(`더보기`);
     var titleArrow = '^';
     var title = '신화 이야기 더 자세히 보기';
@@ -117,10 +124,12 @@ function ShowMythHistory(characterIdx){
             setShowFullHistoryMsg('접기');
             fullMythDiv.current.style.top = '5vh';
             showFullBtnClicked.current.style.display = 'block';
+            // appBackground.current.style.backgroundColor = 'rgba(0,0,0,0.5)';
         }
         else{
             setShowFullHistoryMsg('더보기');
-            fullMythDiv.current.style.top = '95vh';
+            if(isMobile)fullMythDiv.current.style.top = '95vh';
+            if(isBrowser)fullMythDiv.current.style.top = '100vh';
             showFullBtnClicked.current.style.display = 'none';
         }
     } 
@@ -129,53 +138,114 @@ function ShowMythHistory(characterIdx){
         titleArrow = 'v';
         title = '접기';
     }
-    return(
-        <div className={styles.FullMythStory} ref={fullMythDiv} >
-            <div className={styles.FullStoryTitle} onClick={onShowFullBtnClicked} ref={fullStoryTitle}>
-                <>{titleArrow} <br></br> {title}</>
-            </div>
-            <div className={styles.InnerStory} ref={showFullBtnClicked} dangerouslySetInnerHTML={{__html: characterResult[characterId].story}}>
-                
-            </div>
-        </div>  
-    )
+    if(isMobile){
+        return(
+            <div className={styles.FullMythStory} ref={fullMythDiv} >
+                <div className={styles.FullStoryTitle} onClick={onShowFullBtnClicked} ref={fullStoryTitle}>
+                    <>{titleArrow} <br></br> {title}</>
+                </div>
+                <div className={styles.InnerStory} ref={showFullBtnClicked} dangerouslySetInnerHTML={{__html: characterResult[characterId].story}}>
+                    
+                </div>
+            </div>  
+        )
+    }
+
+    if(isBrowser){
+        return(
+            <div className={styles.BrowserFullMythStory} ref={fullMythDiv} >
+                <div className={styles.FullStoryTitle} onClick={onShowFullBtnClicked} ref={fullStoryTitle}>
+                    <>{titleArrow} <br></br> {title}</>
+                </div>
+                <div className={styles.InnerStory} ref={showFullBtnClicked} dangerouslySetInnerHTML={{__html: characterResult[characterId].story}}>
+                    
+                </div>
+            </div>  
+        )
+    }
+    
 }
 
 
 
 function Result(){
-    return(
-        <div className={styles.App}>
-            <ShowCharacterImg characterIdx={characterId} />
-            
-            <ShowTitleArea characterIdx={characterId} />
+    
 
-            <div className={styles.InfoArea}>
-                <CharacterInfo info={characterResult[characterId].info} />
+    if(isMobile){
+        return(
+            <div className={styles.App}>
+                <ShowCharacterImg characterIdx={characterId} />
+                
+                <ShowTitleArea characterIdx={characterId} />
+    
+                <div className={styles.InfoArea}>
+                    <CharacterInfo info={characterResult[characterId].info} />
+                </div>
+    
+                <div className={styles.PlusMinusArea}>
+                        <div id={styles.PlusTitle}>장점</div>
+                        <PlusList characterIdx={characterResult[characterId].plus} />
+                        <div id={styles.MinusTitle}>단점</div>
+                        <MinusList characterIdx={characterResult[characterId].minus} />
+                </div>
+                <div className={styles.SimilarOppositeArea}>
+                    <div id={styles.SimilarArea}>
+                        <div className={styles.SimilarOppositeTitle}>비슷한 유형</div>
+                        <div className={styles.SimilarOppositeContent}>{characterResult[characterId].similarTo}</div>
+                    </div>
+                    <div id={styles.OppositeArea}>
+                        <div className={styles.SimilarOppositeTitle}>반대 유형</div>
+                        <div className={styles.SimilarOppositeContent}>{characterResult[characterId].oppositTo}</div>
+                    </div>
+                </div>      
+                 
+                 <ShowMythHistory />
             </div>
+        )
+    }
+    if(isBrowser){
+        const BrowserApp = styled.div`
+            width: 60vw;
+            margin: auto;
+            padding-top: 2vh;
+            height: 102vh;
+        
+            overflow: hidden;
+        `
 
-            <div className={styles.PlusMinusArea}>
-                    <div id={styles.PlusTitle}>장점</div>
-                    <PlusList characterIdx={characterResult[characterId].plus} />
-                    <div id={styles.MinusTitle}>단점</div>
-                    <MinusList characterIdx={characterResult[characterId].minus} />
-            </div>
-            <div className={styles.SimilarOppositeArea}>
-                <div id={styles.SimilarArea}>
-                    <div className={styles.SimilarOppositeTitle}>비슷한 유형</div>
-                    <div className={styles.SimilarOppositeContent}>{characterResult[characterId].similarTo}</div>
+        return(
+            <BrowserApp>
+                <ShowCharacterImg characterIdx={characterId} />
+                
+                <ShowTitleArea characterIdx={characterId} />
+    
+                <div className={styles.InfoArea}>
+                    <CharacterInfo info={characterResult[characterId].info} />
                 </div>
-                <div id={styles.OppositeArea}>
-                    <div className={styles.SimilarOppositeTitle}>반대 유형</div>
-                    <div className={styles.SimilarOppositeContent}>{characterResult[characterId].oppositTo}</div>
+    
+                <div className={styles.PlusMinusArea}>
+                        <div id={styles.PlusTitle}>장점</div>
+                        <PlusList characterIdx={characterResult[characterId].plus} />
+                        <div id={styles.MinusTitle}>단점</div>
+                        <MinusList characterIdx={characterResult[characterId].minus} />
                 </div>
-            </div>      
-             
-             <ShowMythHistory characterIdx={characterId} />
-        </div>
-        
-        
-    )
+                <div className={styles.SimilarOppositeArea}>
+                    <div id={styles.SimilarArea}>
+                        <div className={styles.SimilarOppositeTitle}>비슷한 유형</div>
+                        <div className={styles.SimilarOppositeContent}>{characterResult[characterId].similarTo}</div>
+                    </div>
+                    <div id={styles.OppositeArea}>
+                        <div className={styles.SimilarOppositeTitle}>반대 유형</div>
+                        <div className={styles.SimilarOppositeContent}>{characterResult[characterId].oppositTo}</div>
+                    </div>
+                </div>      
+                 
+                 <ShowMythHistory />
+            </BrowserApp>
+        )
+    }
+
+    
 }
 
 export default Result;
