@@ -2,10 +2,20 @@
     max-width: 1500px;
     margin: auto;
     padding-top: 2vh;
-    height: 105vh;
+    height: 102vh;
 
     overflow: hidden;
 }
+
+.BrowserApp{
+    width: 60vw;
+    margin: auto;
+    padding-top: 2vh;
+    height: 102vh;
+
+    overflow: hidden;
+}
+
 img {
     max-width: 100%;
     max-height: 100%;
@@ -21,8 +31,9 @@ img {
 }
 
 .TitleArea{
-    width: 100vw;
+    width: 100%;
     height: auto;
+    text-align: center;
 
     margin-top: 20px;
 }
@@ -30,15 +41,20 @@ img {
 .MainTitle{
     font-size: 1.2em;
     font-weight: bolder;
+
+    text-align: center;
 }
 
 .SubTitle{
+    width: 100%;
+    margin: auto;
+    text-align: center;
     font-size: 1.1em;
     margin-top: 0.6em;
 }
 
 .InfoArea{
-    width: 92vw;
+    width: 90%;
     margin-top: 3vh;
     margin-left: 4vw;
     text-align: left;
@@ -56,7 +72,7 @@ img {
 }
 
 .PlusMinusArea{
-    width: 92vw;
+    width: 100%;
     margin-left: 4vw;
     height: auto;
     margin-top: 15px;
@@ -66,20 +82,21 @@ img {
 
 #PlusTitle{
     width: 100%;
-    text-align: left;
+    text-align: center;
     font-size: 1.2em;
     font-weight: bolder;
 }
 
 #MinusTitle{
     width: 100%;
-    text-align: right;
+    text-align: center;
     font-size: 1.2em;
     font-weight: bolder;
 }
 
 .PlusMinusList{
-    text-align: left;
+    width: 100%;
+    text-align: center;
     list-style-type: none;
     margin-top: 5px;
 }
@@ -87,10 +104,10 @@ img {
 .SimilarOppositeArea{
     display: flex;
     justify-content: space-around;
-    width: 100vw;
+    width: 100%;
     height: fit-content;
 
-    margin-top: 10px;
+    margin-top: 17px;
 }
 
 #SimilarArea{
@@ -127,6 +144,8 @@ img {
     margin-left: 5vw;
     margin-right: 5vw;
     padding-bottom: 5vh;
+
+    cursor: pointer;
     
     top: 95vh;
        
@@ -134,11 +153,23 @@ img {
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
 }
+.BrowserFullMythStory{
+    position: absolute;
+    width: 60vw;
+    padding-bottom: 5vh;
+    
+    cursor: pointer;
+
+    top: 100vh;
+       
+    background-color: #F2F2F2;
+    border-radius: 10px;
+}
 
 .FullStoryTitle{
     width: 100%;
     height: max-content;
-
+    text-align: center;
     font-size: bolder;
 }
 
@@ -147,6 +178,19 @@ img {
     line-height: 1.6em;
     display: none;
     text-align: left;
+    word-break: keep-all;
+
+    font-size: 1.1em;
+    z-index: 999;
+}
+
+.BrowserInnerStory{
+    min-height: 100vh;
+    margin-top: 10vh;
+    line-height: 1.6em;
+    display: none;
+    text-align: left;
+    word-break: keep-all;
 
     font-size: 1.1em;
     z-index: 999;
