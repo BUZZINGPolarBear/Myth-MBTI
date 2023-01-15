@@ -1,11 +1,11 @@
 // import logo from './logo.svg';
-import {Route, Switch} from "react-router-dom";
+import {Route} from "react-router-dom";
 import Result from "./pages/Result";
 import Test from "./pages/TestPage";
 import styled from 'styled-components';
 import './App.css';
-import {BrowserView, MobileView, isBrowser, isMobile} from "react-device-detect";
-import { useEffect } from "react";
+import {isBrowser, isMobile} from "react-device-detect";
+import {useEffect } from "react";
 
 function App() {
   function setScreenSize() {
@@ -16,14 +16,7 @@ function App() {
     setScreenSize();
   });
 
-  if(isBrowser){
-    const BrowserApp = styled.div`
-      width: 60vw;
-      height: 100vh;
-      margin:auto;
-      padding-top: 5vh;
-    `
-    const MainPicArea = styled.div`
+  const MainPicArea = styled.div`
       width: 350px;
       height: 350px;
       margin: auto;
@@ -67,6 +60,14 @@ function App() {
       cursor: pointer;
       background-color: #000;
     `
+
+  if(isBrowser){
+    const BrowserApp = styled.div`
+      width: 60vw;
+      height: 100vh;
+      margin:auto;
+      padding-top: 5vh;
+    `
     return(
       <div>
         
@@ -89,8 +90,39 @@ function App() {
           <Test />
         </Route>
       </div>
-      
-      
+    )
+  }
+
+  if(isMobile){
+    const MobileBrowserApp = styled.div`
+      width: 98vw;
+      height: 100vh;
+      margin:auto;
+      padding-top: 5vh;
+    `
+    
+    return(
+      <div>
+        
+        <Route exact path="/">
+          <MobileBrowserApp>
+            <MainPicArea>
+              <MainPic src='images/characters/sample.png' alt='main' />
+              <TitleArea>나의 신화 속 사랑 유형 알아보기</TitleArea>
+              <SubTitleArea>신화는 우리의 삶과 맞닿아있습니다. <br></br> 여러분은 어떤 신의 사랑을 하고 있을까요?</SubTitleArea>
+              <StartButton onClick={() => {window.location.href = '/test'}}>시작하기</StartButton>
+            </MainPicArea>
+          </MobileBrowserApp>
+        </Route>
+        
+
+        <Route exact path="/result">
+          <Result />
+        </Route>
+        <Route exact path="/test">
+          <Test />
+        </Route>
+      </div>
     )
   }
 }
