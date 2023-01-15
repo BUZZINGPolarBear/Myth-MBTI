@@ -1,8 +1,38 @@
 import {useRef, useState} from 'react';
 import characterResult from "../characterResult";
 import styles from './css/Result.module.css';
+import questions from "../questions";
 
-let characterId = 7;
+let characterId = getCharacterId();
+
+function getCharacterId(){
+    let hj = Number(localStorage.getItem("hj"));
+    let jj = Number(localStorage.getItem('jj'));
+    let b = Number(localStorage.getItem('b'));
+    let realistic = Number(localStorage.getItem('realistic'));
+    let hs = Number(localStorage.getItem('hs'));
+    let fixed = localStorage.getItem('fixed');
+    let e = localStorage.getItem('e');
+    let n = localStorage.getItem('n');
+    let t = localStorage.getItem('t');
+    let p = localStorage.getItem('p');
+
+    let threshold = (hj+jj+b+realistic+hs)/5;
+
+    console.log(threshold);
+
+    if(hj > threshold && hs > threshold) return 2;
+    if(hj == 0 && hs == 0) return 3;
+    if(jj>threshold && realistic>threshold) return 4;
+    if(jj>threshold && b>threshold) return 5;
+    if(jj>threshold && realistic<-threshold) return 1;
+    if(jj>threshold && hs<-threshold) return 0;
+    if(hs > threshold && realistic < -threshold) return 6;
+    if(hs>threshold && realistic>threshold) return 7;
+
+    return 8;
+
+}
 function CharacterInfo(info){
     const infoList = [];
 
