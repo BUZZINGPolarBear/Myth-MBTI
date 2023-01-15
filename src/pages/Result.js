@@ -4,6 +4,9 @@ import styles from './css/Result.module.css';
 import styled from 'styled-components';
 import questions from "../questions";
 import {BrowserView, MobileView, isBrowser, isMobile} from "react-device-detect";
+import {createStore} from 'redux';
+import {Provider, userSelector, useDispatch} from 'react-redux';
+import { readBuilderProgram } from 'typescript';
 
 let characterId = getCharacterId();
 
@@ -120,11 +123,11 @@ function ShowMythHistory(){
     var title = '신화 이야기 더 자세히 보기';
 
     const onShowFullBtnClicked = () =>{
+        const appBg = document.getElementsByClassName('App')[0];
         if(showFullBtnClicked.current.style.display === 'none'){
             setShowFullHistoryMsg('접기');
             fullMythDiv.current.style.top = '5vh';
             showFullBtnClicked.current.style.display = 'block';
-            // appBackground.current.style.backgroundColor = 'rgba(0,0,0,0.5)';
         }
         else{
             setShowFullHistoryMsg('더보기');
@@ -157,7 +160,7 @@ function ShowMythHistory(){
                 <div className={styles.FullStoryTitle} onClick={onShowFullBtnClicked} ref={fullStoryTitle}>
                     <>{titleArrow} <br></br> {title}</>
                 </div>
-                <div className={styles.InnerStory} ref={showFullBtnClicked} dangerouslySetInnerHTML={{__html: characterResult[characterId].story}}>
+                <div className={styles.BrowserInnerStory} ref={showFullBtnClicked} dangerouslySetInnerHTML={{__html: characterResult[characterId].story}}>
                     
                 </div>
             </div>  
@@ -204,6 +207,7 @@ function Result(){
         )
     }
     if(isBrowser){
+
         const BrowserApp = styled.div`
             width: 60vw;
             margin: auto;
@@ -211,10 +215,11 @@ function Result(){
             height: 102vh;
         
             overflow: hidden;
+            background-color: rgba(0,0,0, 0);
         `
 
         return(
-            <BrowserApp>
+                <BrowserApp className='App'>
                 <ShowCharacterImg characterIdx={characterId} />
                 
                 <ShowTitleArea characterIdx={characterId} />
@@ -241,7 +246,7 @@ function Result(){
                 </div>      
                  
                  <ShowMythHistory />
-            </BrowserApp>
+            </BrowserApp>            
         )
     }
 
