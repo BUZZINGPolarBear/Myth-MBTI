@@ -26,3 +26,5 @@ yarn-error.log*
 characterResult.js
 
 src/questions.js
+
+server/node_modules
