@@ -54,10 +54,19 @@
     transition: 0.3s;
     background-color: #F2F2F2;
 }
-.FirstAnswer:hover{
-    background-color: #000000b3;
-    color: #ffffff;
+
+@media(hover: hover) and (pointer: fine) {
+    .FirstAnswer:hover{
+        background-color: #000000b3;
+        color: #ffffff;
+    }
+    .SecondAnswer:hover{
+        background-color: #000000b3;
+        color: #ffffff;
+    
+    }
 }
+
 .SecondAnswer{
     display: flex;
     justify-content: center;
@@ -73,11 +82,7 @@
     transition: 0.3s;
     background-color: #F2F2F2;
 }
-.SecondAnswer:hover{
-    background-color: #000000b3;
-    color: #ffffff;
 
-}
 
 .PercentageArea{
     position: relative;
