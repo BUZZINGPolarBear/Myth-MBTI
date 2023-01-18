@@ -8,7 +8,16 @@ import {createStore} from 'redux';
 import {Provider, userSelector, useDispatch} from 'react-redux';
 import { readBuilderProgram } from 'typescript';
 
-let characterId = getCharacterId();
+let characterId=0;
+console.log(document.location.search.split("?")[1])
+if(document.location.search.split("?").length === 2){
+    let url = document.location.search.split("?")[1];
+    console.log(url);
+    characterId = Number(url);
+}
+else{
+    characterId = getCharacterId();
+}
 console.log(`result id: ${characterId}`);
 
 function getCharacterId(){
@@ -51,7 +60,7 @@ function CharacterInfo(info){
     const infoList = [];
 
     for(var property of info.info){
-        infoList.push(<p>{property.content}</p>)
+        infoList.push(<p key={property.id}>{property.content}</p>)
     }
     
     return(
@@ -210,10 +219,14 @@ function Result(){
                     <div id={styles.SimilarArea}>
                         <div className={styles.SimilarOppositeTitle}>환상의 조합</div>
                         <div className={styles.SimilarOppositeImgArea}>
-                            <div className={styles.SimilarImg1}>
+                            <div className={styles.SimilarImg1} onClick={()=>{
+                                window.location.href=`/result?${characterResult[characterId].similarTo[0]}`;
+                            }}>
                                 <img src={characterResult[characterResult[characterId].similarTo[0]].imgsrc} alt='character img'></img>
                             </div>
-                            <div className={styles.SimilarImg2}>
+                            <div className={styles.SimilarImg2}onClick={()=>{
+                                window.location.href=`/result?${characterResult[characterId].similarTo[1]}`;
+                            }}>
                                 <img src={characterResult[characterResult[characterId].similarTo[1]].imgsrc} alt='character img'></img>
                             </div>
                         </div>
@@ -221,7 +234,9 @@ function Result(){
                     </div>
                     <div id={styles.OppositeArea}>
                         <div className={styles.SimilarOppositeTitle}>환장의 조합 </div>
-                        <div className={styles.SimilarOppositeImgArea}>
+                        <div className={styles.SimilarOppositeImgArea}onClick={()=>{
+                                window.location.href=`/result?${characterResult[characterId].oppositTo}`;
+                            }}>
                             <div className={styles.SimilarImgOnly}>
                                 <img src={characterResult[characterResult[characterId].oppositTo].imgsrc} alt='character img'></img>
                             </div>
@@ -230,7 +245,7 @@ function Result(){
                     </div>
                 </div>      
                  <FeatureBtnArea>
-                    <ReTestBtn>테스트 다시하기</ReTestBtn>
+                    <ReTestBtn onClick={()=>{window.location.href="/"}}>테스트 다시하기</ReTestBtn>
                     <ReTestBtn>링크 공유하기</ReTestBtn>
                  </FeatureBtnArea>
                  <ShowMythHistory />
@@ -269,10 +284,14 @@ function Result(){
                     <div id={styles.SimilarArea}>
                         <div className={styles.SimilarOppositeTitle}>환상의 조합</div>
                         <div className={styles.SimilarOppositeImgArea}>
-                            <div className={styles.SimilarImg1}>
+                            <div className={styles.SimilarImg1} onClick={()=>{
+                                window.location.href=`/result?${characterResult[characterId].similarTo[0]}`;
+                            }}>
                                 <img src={characterResult[characterResult[characterId].similarTo[0]].imgsrc} alt='character img'></img>
                             </div>
-                            <div className={styles.SimilarImg2}>
+                            <div className={styles.SimilarImg2} onClick={()=>{
+                                window.location.href=`/result?${characterResult[characterId].similarTo[1]}`;
+                            }}>
                                 <img src={characterResult[characterResult[characterId].similarTo[1]].imgsrc} alt='character img'></img>
                             </div>
                         </div>
@@ -281,7 +300,9 @@ function Result(){
                     <div id={styles.OppositeArea}>
                         <div className={styles.SimilarOppositeTitle}>환장의 조합 </div>
                         <div className={styles.SimilarOppositeImgArea}>
-                            <div className={styles.SimilarImgOnly}>
+                            <div className={styles.SimilarImgOnly} onClick={()=>{
+                                window.location.href=`/result?${characterResult[characterId].oppositTo}`;
+                            }}>
                                 <img src={characterResult[characterResult[characterId].oppositTo].imgsrc} alt='character img'></img>
                             </div>
                         </div>
@@ -289,7 +310,7 @@ function Result(){
                     </div>
                 </div>      
                 <FeatureBtnArea>
-                    <ReTestBtn>테스트 다시하기</ReTestBtn>
+                    <ReTestBtn onClick={()=>{window.location.href="/"}}>테스트 다시하기</ReTestBtn>
                     <ReTestBtn>링크 공유하기</ReTestBtn>
                  </FeatureBtnArea>
                  <ShowMythHistory />
