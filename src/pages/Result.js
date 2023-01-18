@@ -9,6 +9,7 @@ import {Provider, userSelector, useDispatch} from 'react-redux';
 import { readBuilderProgram } from 'typescript';
 
 let characterId = getCharacterId();
+console.log(`result id: ${characterId}`);
 
 function getCharacterId(){
     let hj = Number(localStorage.getItem("hj"));
@@ -23,26 +24,28 @@ function getCharacterId(){
     let p = Number(localStorage.getItem('p'));
 
     let threshold = (hj+jj+b+realistic+hs)/5;
+    console.log(threshold)
 
-    if(hj > threshold && hs > threshold) return 2;
-    if(hj == 0 && hs == 0) return 3;
-    if(jj>threshold && realistic>threshold) return 4;
-    if(jj>threshold && b>threshold) return 5;
-    if(jj>threshold && realistic<-threshold) return 1;
-    if(jj>threshold && hs<-threshold) return 0;
-    if(hs > threshold && realistic < -threshold) return 6;
-    if(hs>threshold && realistic>threshold) return 7;
+    if(hj >= threshold && hs >= threshold) return 2;
+    if(hj == threshold && hs == threshold) return 3;
+    if(t>=0 && realistic>=threshold) return 4;
+    if(jj>=threshold && b>=threshold) return 5;
+    if(hj<=threshold && jj<=threshold) return 1;
+    if(jj>=threshold && hs<=threshold) return 0;
+    if(hs >= threshold && realistic <= threshold) return 6;
+    if(hs>=threshold && realistic>=threshold) return 7;
 
-    if(n>0 && p>0) return 0;
-    if(e<0 && p>0) return 1;
-    if(e>0 && p<0) return 2;
-    if(n<0 && p<0) return 3;
-    if(n<0 && t>0) return 4;
-    if(t<0 && p>0) return 5;
-    if(n>0 && t<0) return 6;
-    if(t<0 && p<0) return 7;
+    if(n>=0 && p>=0) return 0;
+    if(e<=0 && p>=0) return 1;
+    if(e>=0 && p<=0) return 2;
+    if(n<=0 && p<=0) return 3;
+    if(n<=0 && t>=0) return 4;
+    if(t<=0 && p>=0) return 5;
+    if(n>=0 && t<=0) return 6;
+    if(t<=0 && p<=0) return 7;
 
-    return fixed;
+    if(fixed != null)return fixed;
+    else return 0;
 }
 function CharacterInfo(info){
     const infoList = [];
@@ -172,10 +175,9 @@ function Result(){
     if(isMobile){
         return(
             <div className={styles.App}>
+                <ShowTitleArea characterIdx={characterId} />
                 <ShowCharacterImg characterIdx={characterId} />
                 
-                <ShowTitleArea characterIdx={characterId} />
-    
                 <div className={styles.InfoArea}>
                     <CharacterInfo info={characterResult[characterId].info} />
                 </div>
@@ -215,9 +217,8 @@ function Result(){
 
         return(
                 <BrowserApp className='App'>
-                <ShowCharacterImg characterIdx={characterId} />
-                
                 <ShowTitleArea characterIdx={characterId} />
+                <ShowCharacterImg characterIdx={characterId} />
     
                 <div className={styles.InfoArea}>
                     <CharacterInfo info={characterResult[characterId].info} />

@@ -148,7 +148,7 @@ ul{
 
     cursor: pointer;
     
-    top: 95vh;
+    margin-top: 3vh;
        
     background-color: #000;
     color: #fff;
@@ -162,7 +162,7 @@ ul{
     
     cursor: pointer;
 
-    top: 100vh;
+    margin-top: 5vh;
        
     background-color: #F2F2F2;
     border-radius: 10px;
