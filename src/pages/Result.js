@@ -9,6 +9,7 @@ import {Provider, userSelector, useDispatch} from 'react-redux';
 import { readBuilderProgram } from 'typescript';
 
 let characterId=0;
+let mythDetail = false;
 console.log(document.location.search.split("?")[1])
 if(document.location.search.split("?").length === 2){
     let url = document.location.search.split("?")[1];
@@ -133,15 +134,22 @@ function ShowMythHistory(){
 
     const onShowFullBtnClicked = () =>{
         const appBg = document.getElementsByClassName('App')[0];
-        if(showFullBtnClicked.current.style.display === 'none'){
+        console.log(showFullBtnClicked.current.style.display);
+        if(mythDetail === false){
             setShowFullHistoryMsg('접기');
-            fullMythDiv.current.style.top = '5vh';
+            mythDetail = true;
+            fullMythDiv.current.style.animationPlayState = 'paused';
+            fullMythDiv.current.style.position = 'absolute';
             showFullBtnClicked.current.style.display = 'block';
+            fullMythDiv.current.style.top = '5vh';
+            
         }
         else{
             setShowFullHistoryMsg('더보기');
-            if(isMobile)fullMythDiv.current.style.top = '95vh';
-            if(isBrowser)fullMythDiv.current.style.top = '100vh';
+            mythDetail = false;
+            // if(isMobile)fullMythDiv.current.style.top = '95vh';
+            // if(isBrowser)fullMythDiv.current.style.top = '100vh';
+            fullMythDiv.current.style.position = 'relative';
             showFullBtnClicked.current.style.display = 'none';
         }
     } 
