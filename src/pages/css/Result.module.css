@@ -175,6 +175,10 @@ ul{
     color: #fff;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
+
+    animation-name: mobileJumper;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
 }
 .BrowserFullMythStory{
     position: absolute;
@@ -185,8 +189,13 @@ ul{
 
     margin-top: 5vh;
        
-    background-color: #F2F2F2;
+    background-color: #000;
+    color: #fff;
     border-radius: 10px;
+
+    animation-name: browserJumper;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
 }
 
 .FullStoryTitle{
@@ -218,3 +227,51 @@ ul{
     font-size: 1.1em;
     z-index: 999;
 }
+
+@keyframes browserJumper {
+    from {
+        margin-top: 5vh;
+    }
+    20% {
+        margin-top: 6vh;
+    }
+    30% {
+        margin-top: 5vh;
+    }
+    50% {
+        margin-top: 6vh;
+    }
+    60% {
+        margin-top: 5vh;
+    }
+    80% {
+        margin-top: 6vh;
+    }
+    to {
+        margin-top: 5vh;
+    }
+  }
+
+  @keyframes mobileJumper {
+    from {
+        margin-top: 3vh;
+    }
+    20% {
+        margin-top: 4vh;
+    }
+    30% {
+        margin-top: 3vh;
+    }
+    50% {
+        margin-top: 4vh;
+    }
+    60% {
+        margin-top: 3vh;
+    }
+    80% {
+        margin-top: 4vh;
+    }
+    to {
+        margin-top: 3vh;
+    }
+  }
