@@ -27,7 +27,7 @@ function getCharacterId(){
     console.log(threshold)
 
     if(hj >= threshold && hs >= threshold) return 2;
-    if(hj == threshold && hs == threshold) return 3;
+    if(hj === threshold && hs === threshold) return 3;
     if(t>=0 && realistic>=threshold) return 4;
     if(jj>=threshold && b>=threshold) return 5;
     if(hj<=threshold && jj<=threshold) return 1;
@@ -51,14 +51,12 @@ function CharacterInfo(info){
     const infoList = [];
 
     for(var property of info.info){
-        infoList.push(<li key={property.id}>{property.content}</li>)
+        infoList.push(<p>{property.content}</p>)
     }
     
     return(
         <div className={styles.InfoList}>
-            <ul>
-                {infoList}
-            </ul>  
+            {infoList}  
         </div>
     )
 }
