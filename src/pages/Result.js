@@ -172,6 +172,26 @@ function ShowMythHistory(){
 }
 
 function Result(){
+    const FeatureBtnArea = styled.div`
+            display: flex;
+            justify-content: space-around;
+            width: 98%;
+            margin: auto;
+            height: 5vh;
+            margin-top: 5vh;
+        `
+        const ReTestBtn = styled.div`
+            width: 45%;
+            padding: 3px, 10px;
+            
+            cursor: pointer;
+            font-size: 1.1rem;
+            text-align: center;
+            line-height: 5vh;
+
+            background-color: #f5f5f5;
+            border-radius: 20px;
+        `
     if(isMobile){
         return(
             <div className={styles.App}>
@@ -190,15 +210,31 @@ function Result(){
                 </div>
                 <div className={styles.SimilarOppositeArea}>
                     <div id={styles.SimilarArea}>
-                        <div className={styles.SimilarOppositeTitle}>비슷한 유형</div>
-                        <div className={styles.SimilarOppositeContent}>{characterResult[characterId].similarTo}</div>
+                        <div className={styles.SimilarOppositeTitle}>환상의 조합</div>
+                        <div className={styles.SimilarOppositeImgArea}>
+                            <div className={styles.SimilarImg1}>
+                                <img src={characterResult[characterResult[characterId].similarTo[0]].imgsrc} alt='character img'></img>
+                            </div>
+                            <div className={styles.SimilarImg2}>
+                                <img src={characterResult[characterResult[characterId].similarTo[1]].imgsrc} alt='character img'></img>
+                            </div>
+                        </div>
+                        <div className={styles.SimilarOppositeContent}>{characterResult[characterResult[characterId].similarTo[0]].name}, {characterResult[characterResult[characterId].similarTo[1]].name}</div>
                     </div>
                     <div id={styles.OppositeArea}>
-                        <div className={styles.SimilarOppositeTitle}>반대 유형</div>
-                        <div className={styles.SimilarOppositeContent}>{characterResult[characterId].oppositTo}</div>
+                        <div className={styles.SimilarOppositeTitle}>환장의 조합 </div>
+                        <div className={styles.SimilarOppositeImgArea}>
+                            <div className={styles.SimilarImgOnly}>
+                                <img src={characterResult[characterResult[characterId].oppositTo].imgsrc} alt='character img'></img>
+                            </div>
+                        </div>
+                        <div className={styles.SimilarOppositeContent}>{characterResult[characterResult[characterId].oppositTo].name}</div>
                     </div>
                 </div>      
-                 
+                 <FeatureBtnArea>
+                    <ReTestBtn>테스트 다시하기</ReTestBtn>
+                    <ReTestBtn>링크 공유하기</ReTestBtn>
+                 </FeatureBtnArea>
                  <ShowMythHistory />
             </div>
         )
@@ -209,12 +245,13 @@ function Result(){
             width: 60vw;
             margin: auto;
             padding-top: 2vh;
-            height: 102vh;
+            height: max-content;
         
             overflow: hidden;
             background-color: rgba(0,0,0, 0);
         `
-
+        
+        console.log(characterResult[characterResult[characterId].similarTo[1]].name)
         return(
                 <BrowserApp className='App'>
                 <ShowTitleArea characterIdx={characterId} />
@@ -232,15 +269,31 @@ function Result(){
                 </div>
                 <div className={styles.SimilarOppositeArea}>
                     <div id={styles.SimilarArea}>
-                        <div className={styles.SimilarOppositeTitle}>비슷한 유형</div>
-                        <div className={styles.SimilarOppositeContent}>{characterResult[characterId].similarTo}</div>
+                        <div className={styles.SimilarOppositeTitle}>환상의 조합</div>
+                        <div className={styles.SimilarOppositeImgArea}>
+                            <div className={styles.SimilarImg1}>
+                                <img src={characterResult[characterResult[characterId].similarTo[0]].imgsrc} alt='character img'></img>
+                            </div>
+                            <div className={styles.SimilarImg2}>
+                                <img src={characterResult[characterResult[characterId].similarTo[1]].imgsrc} alt='character img'></img>
+                            </div>
+                        </div>
+                        <div className={styles.SimilarOppositeContent}>{characterResult[characterResult[characterId].similarTo[0]].name}, {characterResult[characterResult[characterId].similarTo[1]].name}</div>
                     </div>
                     <div id={styles.OppositeArea}>
-                        <div className={styles.SimilarOppositeTitle}>반대 유형</div>
-                        <div className={styles.SimilarOppositeContent}>{characterResult[characterId].oppositTo}</div>
+                        <div className={styles.SimilarOppositeTitle}>환장의 조합 </div>
+                        <div className={styles.SimilarOppositeImgArea}>
+                            <div className={styles.SimilarImgOnly}>
+                                <img src={characterResult[characterResult[characterId].oppositTo].imgsrc} alt='character img'></img>
+                            </div>
+                        </div>
+                        <div className={styles.SimilarOppositeContent}>{characterResult[characterResult[characterId].oppositTo].name}</div>
                     </div>
                 </div>      
-                 
+                <FeatureBtnArea>
+                    <ReTestBtn>테스트 다시하기</ReTestBtn>
+                    <ReTestBtn>링크 공유하기</ReTestBtn>
+                 </FeatureBtnArea>
                  <ShowMythHistory />
             </BrowserApp>            
         )
