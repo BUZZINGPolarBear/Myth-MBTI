@@ -8,7 +8,17 @@ import {createStore} from 'redux';
 import {Provider, userSelector, useDispatch} from 'react-redux';
 import { readBuilderProgram } from 'typescript';
 
-let characterId = getCharacterId();
+let characterId=0;
+console.log(document.location.search.split("?")[1])
+if(document.location.search.split("?").length === 2){
+    let url = document.location.search.split("?")[1];
+    console.log(url);
+    characterId = Number(url);
+}
+else{
+    characterId = getCharacterId();
+}
+console.log(`result id: ${characterId}`);
 
 function getCharacterId(){
     let hj = Number(localStorage.getItem("hj"));
@@ -23,39 +33,39 @@ function getCharacterId(){
     let p = Number(localStorage.getItem('p'));
 
     let threshold = (hj+jj+b+realistic+hs)/5;
+    console.log(threshold)
 
-    if(hj > threshold && hs > threshold) return 2;
-    if(hj == 0 && hs == 0) return 3;
-    if(jj>threshold && realistic>threshold) return 4;
-    if(jj>threshold && b>threshold) return 5;
-    if(jj>threshold && realistic<-threshold) return 1;
-    if(jj>threshold && hs<-threshold) return 0;
-    if(hs > threshold && realistic < -threshold) return 6;
-    if(hs>threshold && realistic>threshold) return 7;
+    if(hj >= threshold && hs >= threshold) return 2;
+    if(hj === threshold && hs === threshold) return 3;
+    if(t>=0 && realistic>=threshold) return 4;
+    if(jj>=threshold && b>=threshold) return 5;
+    if(hj<=threshold && jj<=threshold) return 1;
+    if(jj>=threshold && hs<=threshold) return 0;
+    if(hs >= threshold && realistic <= threshold) return 6;
+    if(hs>=threshold && realistic>=threshold) return 7;
 
-    if(n>0 && p>0) return 0;
-    if(e<0 && p>0) return 1;
-    if(e>0 && p<0) return 2;
-    if(n<0 && p<0) return 3;
-    if(n<0 && t>0) return 4;
-    if(t<0 && p>0) return 5;
-    if(n>0 && t<0) return 6;
-    if(t<0 && p<0) return 7;
+    if(n>=0 && p>=0) return 0;
+    if(e<=0 && p>=0) return 1;
+    if(e>=0 && p<=0) return 2;
+    if(n<=0 && p<=0) return 3;
+    if(n<=0 && t>=0) return 4;
+    if(t<=0 && p>=0) return 5;
+    if(n>=0 && t<=0) return 6;
+    if(t<=0 && p<=0) return 7;
 
-    return fixed;
+    if(fixed != null)return fixed;
+    else return 0;
 }
 function CharacterInfo(info){
     const infoList = [];
 
     for(var property of info.info){
-        infoList.push(<li key={property.id}>{property.content}</li>)
+        infoList.push(<p key={property.id}>{property.content}</p>)
     }
     
     return(
         <div className={styles.InfoList}>
-            <ul>
-                {infoList}
-            </ul>  
+            {infoList}  
         </div>
     )
 }
@@ -169,13 +179,32 @@ function ShowMythHistory(){
 }
 
 function Result(){
+    const FeatureBtnArea = styled.div`
+            display: flex;
+            justify-content: space-around;
+            width: 98%;
+            margin: auto;
+            height: 5vh;
+            margin-top: 5vh;
+        `
+        const ReTestBtn = styled.div`
+            width: 45%;
+            padding: 3px, 10px;
+            
+            cursor: pointer;
+            font-size: 1.1rem;
+            text-align: center;
+            line-height: 5vh;
+
+            background-color: #f5f5f5;
+            border-radius: 20px;
+        `
     if(isMobile){
         return(
             <div className={styles.App}>
+                <ShowTitleArea characterIdx={characterId} />
                 <ShowCharacterImg characterIdx={characterId} />
                 
-                <ShowTitleArea characterIdx={characterId} />
-    
                 <div className={styles.InfoArea}>
                     <CharacterInfo info={characterResult[characterId].info} />
                 </div>
@@ -188,15 +217,37 @@ function Result(){
                 </div>
                 <div className={styles.SimilarOppositeArea}>
                     <div id={styles.SimilarArea}>
-                        <div className={styles.SimilarOppositeTitle}>비슷한 유형</div>
-                        <div className={styles.SimilarOppositeContent}>{characterResult[characterId].similarTo}</div>
+                        <div className={styles.SimilarOppositeTitle}>환상의 조합</div>
+                        <div className={styles.SimilarOppositeImgArea}>
+                            <div className={styles.SimilarImg1} onClick={()=>{
+                                window.location.href=`/result?${characterResult[characterId].similarTo[0]}`;
+                            }}>
+                                <img src={characterResult[characterResult[characterId].similarTo[0]].imgsrc} alt='character img'></img>
+                            </div>
+                            <div className={styles.SimilarImg2}onClick={()=>{
+                                window.location.href=`/result?${characterResult[characterId].similarTo[1]}`;
+                            }}>
+                                <img src={characterResult[characterResult[characterId].similarTo[1]].imgsrc} alt='character img'></img>
+                            </div>
+                        </div>
+                        <div className={styles.SimilarOppositeContent}>{characterResult[characterResult[characterId].similarTo[0]].name}, {characterResult[characterResult[characterId].similarTo[1]].name}</div>
                     </div>
                     <div id={styles.OppositeArea}>
-                        <div className={styles.SimilarOppositeTitle}>반대 유형</div>
-                        <div className={styles.SimilarOppositeContent}>{characterResult[characterId].oppositTo}</div>
+                        <div className={styles.SimilarOppositeTitle}>환장의 조합 </div>
+                        <div className={styles.SimilarOppositeImgArea}onClick={()=>{
+                                window.location.href=`/result?${characterResult[characterId].oppositTo}`;
+                            }}>
+                            <div className={styles.SimilarImgOnly}>
+                                <img src={characterResult[characterResult[characterId].oppositTo].imgsrc} alt='character img'></img>
+                            </div>
+                        </div>
+                        <div className={styles.SimilarOppositeContent}>{characterResult[characterResult[characterId].oppositTo].name}</div>
                     </div>
                 </div>      
-                 
+                 <FeatureBtnArea>
+                    <ReTestBtn onClick={()=>{window.location.href="/"}}>테스트 다시하기</ReTestBtn>
+                    <ReTestBtn>링크 공유하기</ReTestBtn>
+                 </FeatureBtnArea>
                  <ShowMythHistory />
             </div>
         )
@@ -207,17 +258,17 @@ function Result(){
             width: 60vw;
             margin: auto;
             padding-top: 2vh;
-            height: 102vh;
+            height: max-content;
         
             overflow: hidden;
             background-color: rgba(0,0,0, 0);
         `
-
+        
+        console.log(characterResult[characterResult[characterId].similarTo[1]].name)
         return(
                 <BrowserApp className='App'>
-                <ShowCharacterImg characterIdx={characterId} />
-                
                 <ShowTitleArea characterIdx={characterId} />
+                <ShowCharacterImg characterIdx={characterId} />
     
                 <div className={styles.InfoArea}>
                     <CharacterInfo info={characterResult[characterId].info} />
@@ -231,15 +282,37 @@ function Result(){
                 </div>
                 <div className={styles.SimilarOppositeArea}>
                     <div id={styles.SimilarArea}>
-                        <div className={styles.SimilarOppositeTitle}>비슷한 유형</div>
-                        <div className={styles.SimilarOppositeContent}>{characterResult[characterId].similarTo}</div>
+                        <div className={styles.SimilarOppositeTitle}>환상의 조합</div>
+                        <div className={styles.SimilarOppositeImgArea}>
+                            <div className={styles.SimilarImg1} onClick={()=>{
+                                window.location.href=`/result?${characterResult[characterId].similarTo[0]}`;
+                            }}>
+                                <img src={characterResult[characterResult[characterId].similarTo[0]].imgsrc} alt='character img'></img>
+                            </div>
+                            <div className={styles.SimilarImg2} onClick={()=>{
+                                window.location.href=`/result?${characterResult[characterId].similarTo[1]}`;
+                            }}>
+                                <img src={characterResult[characterResult[characterId].similarTo[1]].imgsrc} alt='character img'></img>
+                            </div>
+                        </div>
+                        <div className={styles.SimilarOppositeContent}>{characterResult[characterResult[characterId].similarTo[0]].name}, {characterResult[characterResult[characterId].similarTo[1]].name}</div>
                     </div>
                     <div id={styles.OppositeArea}>
-                        <div className={styles.SimilarOppositeTitle}>반대 유형</div>
-                        <div className={styles.SimilarOppositeContent}>{characterResult[characterId].oppositTo}</div>
+                        <div className={styles.SimilarOppositeTitle}>환장의 조합 </div>
+                        <div className={styles.SimilarOppositeImgArea}>
+                            <div className={styles.SimilarImgOnly} onClick={()=>{
+                                window.location.href=`/result?${characterResult[characterId].oppositTo}`;
+                            }}>
+                                <img src={characterResult[characterResult[characterId].oppositTo].imgsrc} alt='character img'></img>
+                            </div>
+                        </div>
+                        <div className={styles.SimilarOppositeContent}>{characterResult[characterResult[characterId].oppositTo].name}</div>
                     </div>
                 </div>      
-                 
+                <FeatureBtnArea>
+                    <ReTestBtn onClick={()=>{window.location.href="/"}}>테스트 다시하기</ReTestBtn>
+                    <ReTestBtn>링크 공유하기</ReTestBtn>
+                 </FeatureBtnArea>
                  <ShowMythHistory />
             </BrowserApp>            
         )

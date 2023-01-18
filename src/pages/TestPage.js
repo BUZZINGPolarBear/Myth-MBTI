@@ -41,10 +41,10 @@ function Test(){
         localStorage.setItem('realistic', Number(localStorage.getItem('realistic'))+questions.questions[questionNumber].secondAnswerScore.realistic);
         localStorage.setItem('hs', Number(localStorage.getItem('hs'))+questions.questions[questionNumber].secondAnswerScore.hs);
         
-        if(questions.questions[questionNumber].mbti.type === 'e') localStorage.setItem('e', Number(localStorage.getItem('e'))+questions.questions[questionNumber].mbti.score);
-        if(questions.questions[questionNumber].mbti.type === 'n') localStorage.setItem('n', Number(localStorage.getItem('n'))+questions.questions[questionNumber].mbti.score);
-        if(questions.questions[questionNumber].mbti.type === 't') localStorage.setItem('t', Number(localStorage.getItem('t'))+questions.questions[questionNumber].mbti.score);
-        if(questions.questions[questionNumber].mbti.type === 'p') localStorage.setItem('p', Number(localStorage.getItem('p'))+questions.questions[questionNumber].mbti.score);
+        if(questions.questions[questionNumber].mbti.type === 'e') localStorage.setItem('e', Number(localStorage.getItem('e'))-questions.questions[questionNumber].mbti.score);
+        if(questions.questions[questionNumber].mbti.type === 'n') localStorage.setItem('n', Number(localStorage.getItem('n'))-questions.questions[questionNumber].mbti.score);
+        if(questions.questions[questionNumber].mbti.type === 't') localStorage.setItem('t', Number(localStorage.getItem('t'))-questions.questions[questionNumber].mbti.score);
+        if(questions.questions[questionNumber].mbti.type === 'p') localStorage.setItem('p', Number(localStorage.getItem('p'))-questions.questions[questionNumber].mbti.score);
 
         if(questions.questions[questionNumber].firstAnswerScore.fixed != null)localStorage.setItem('fixed', questions.questions[questionNumber].secondAnswerScore.fixed);
 

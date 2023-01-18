@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import './App.css';
 import {isBrowser, isMobile} from "react-device-detect";
 import {useEffect } from "react";
+import characterResult from "./characterResult";
 
 function App() {
   function setScreenSize() {
@@ -21,46 +22,47 @@ function App() {
       height: 350px;
       margin: auto;
     `
-    const MainPic = styled.img`
-      width: 100%;
-      height: 100%;
-    `
-    const TitleArea = styled.div`
-      width: 100%;
-      font-size: 1.5rem;
-      font-weight: 600;
+  const MainPic = styled.img`
+    width: 100%;
+    height: 100%;
+  `
+  const TitleArea = styled.div`
+    width: 100%;
+    font-size: 1.5rem;
+    font-weight: 600;
 
-      margin: auto;
-      margin-top: 1.2rem;
-      
-      text-align: center;
-    `
+    margin: auto;
+    margin-top: 1.2rem;
+    
+    text-align: center;
+  `
 
-    const SubTitleArea = styled.div`
-      width: 100%;
-      font-size: 1.2rem;
+  const SubTitleArea = styled.div`
+    width: 100%;
+    font-size: 1.2rem;
 
-      margin: auto;
-      margin-top: 1.2rem;
-      line-height: 1.5rem;
-      text-align: center;
-    `
+    margin: auto;
+    margin-top: 1.2rem;
+    line-height: 1.5rem;
+    text-align: center;
+  `
 
-    const StartButton = styled.button`
-      width: 100%;
-      padding: 0.5rem 1rem;
-      margin: auto;
-      margin-top: 2rem;
+  const StartButton = styled.button`
+    width: 100%;
+    padding: 0.5rem 1rem;
+    margin: auto;
+    margin-top: 2rem;
 
-      border-radius: 20px;
+    border-radius: 20px;
 
-      color: #fff;
-      font-size: 1.2rem;
-      font-weight: 600;
-      cursor: pointer;
-      background-color: #000;
-    `
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: #000;
+  `
 
+  const randCharacterNum = Math.floor(Math.random() * 7);
   if(isBrowser){
     const BrowserApp = styled.div`
       width: 60vw;
@@ -74,7 +76,7 @@ function App() {
         <Route exact path="/">
           <BrowserApp>
             <MainPicArea>
-              <MainPic src='images/characters/sample.png' alt='main' />
+              <MainPic src={characterResult[randCharacterNum].imgsrc} alt='main' />
               <TitleArea>나의 신화 속 사랑 유형 알아보기</TitleArea>
               <SubTitleArea>신화는 우리의 삶과 맞닿아있습니다. <br></br> 여러분은 어떤 신의 사랑을 하고 있을까요?</SubTitleArea>
               <StartButton onClick={() => {window.location.href = '/test'}}>시작하기</StartButton>
@@ -107,7 +109,7 @@ function App() {
         <Route exact path="/">
           <MobileBrowserApp>
             <MainPicArea>
-              <MainPic src='images/characters/sample.png' alt='main' />
+              <MainPic src={characterResult[randCharacterNum].imgsrc} alt='main' />
               <TitleArea>나의 신화 속 사랑 유형 알아보기</TitleArea>
               <SubTitleArea>신화는 우리의 삶과 맞닿아있습니다. <br></br> 여러분은 어떤 신의 사랑을 하고 있을까요?</SubTitleArea>
               <StartButton onClick={() => {window.location.href = '/test'}}>시작하기</StartButton>

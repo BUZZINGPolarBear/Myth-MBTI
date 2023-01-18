@@ -49,6 +49,7 @@
     margin-bottom: 3%;
 
     border-radius: 40px;
+    cursor: pointer;
 
     background-color: #F2F2F2;
 }
@@ -63,6 +64,7 @@
 
     border-radius: 40px;
     margin-bottom: 20px;
+    cursor: pointer;
 
     background-color: #F2F2F2;
 }
