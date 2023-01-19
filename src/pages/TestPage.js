@@ -2,7 +2,8 @@ import {useRef, useState} from 'react';
 import questions from "../questions";
 import styles from './css/TestPage.module.css';
 import {useEffect } from "react";
-
+import styled from 'styled-components';
+import {BrowserView, MobileView, isBrowser, isMobile} from "react-device-detect";
 
 
 function Test(){
@@ -21,7 +22,7 @@ function Test(){
         ins.setAttribute('data-ad-unit','DAN-fAXiJ2rJLl5H09SG');
         document.querySelector('.adfit').appendChild(ins);
         document.querySelector('.adfit').appendChild(scr);
-      });
+    });
     
 
     const firstAnswerClicked = () => {
@@ -68,19 +69,28 @@ function Test(){
             window.location.href = '/result';
         }
     }
+
+    const KakaoAdfitArea = styled.div`
+      width: 300px;
+      height: 250px;
+      margin: auto;
+      margin-top: 10vh;
+      background-color: #000;
+    `
     return(
+        
         <div className={styles.App}>
-            <div className = "adfit"></div>
+            
             <div className={styles.MainQuestion}>
                 <div className={styles.Question}>{questions.questions[questionNumber].question}</div>
             </div>
 
-            <div className={styles.AnswerArea}>
-                <div className={styles.FirstAnswer} onClick={firstAnswerClicked}>
+            <div className="AnswerArea">
+                <div className={isMobile ? styles.FirstAnswer : styles.BrowserFirstAnswer} onClick={firstAnswerClicked}>
                     {questions.questions[questionNumber].firstAnswer}
                 </div>
-                <div className={styles.SecondAnswer} onClick={secondAnswerClicked}>
-                {questions.questions[questionNumber].secondAnswer}
+                <div className={isMobile ? styles.SecondAnswer : styles.BrowserSecondAnswer} onClick={secondAnswerClicked}>
+                    {questions.questions[questionNumber].secondAnswer}
                 </div>
             </div>
 
@@ -90,7 +100,7 @@ function Test(){
                 
             </div>
             <div className={styles.Percentage}>{questionNumber+1}/12</div>
-            <div className = "adfit"></div>
+            <KakaoAdfitArea className='adfit'></KakaoAdfitArea>
         </div>   
     )
 }

@@ -2,8 +2,7 @@
     max-width: 1500px;
     width: 95vw;
     margin: auto;
-    height: 50vh;
-    margin-top: 20vh;
+    padding-top: 15vh;
 
     /* background-color: antiquewhite; */
 
@@ -31,7 +30,7 @@
     align-items: center;
 
     width: 90%;
-    height: 60%;
+    height: 30vh;
 
     margin: auto;
 
@@ -43,9 +42,45 @@
     justify-content: center;
     align-items: center;
 
-    height: 30%;
-    width: 100%;
-    margin-top: 3%;
+    height: 8vh;
+    width: 90%;
+    margin: auto;
+    margin-top: 10%;
+    margin-bottom: 8%;
+
+    border-radius: 40px;
+    cursor: pointer;
+
+    transition: 0.3s;
+    background-color: #F2F2F2;
+}
+.SecondAnswer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 8vh;
+    width: 90%;
+    margin: auto;
+    margin-bottom: 8%;
+
+    border-radius: 40px;
+    margin-bottom: 20px;
+    cursor: pointer;
+
+    transition: 0.3s;
+    background-color: #F2F2F2;
+}
+
+.BrowserFirstAnswer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 10vh;
+    width: 90%;
+    margin:auto;
+    margin-top: 5%;
     margin-bottom: 3%;
 
     border-radius: 40px;
@@ -54,7 +89,23 @@
     transition: 0.3s;
     background-color: #F2F2F2;
 }
+.BrowserSecondAnswer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
+    height: 10vh;
+    width: 90%;
+    margin:auto;
+    margin-bottom: 8%;
+
+    border-radius: 40px;
+    margin-bottom: 20px;
+    cursor: pointer;
+
+    transition: 0.3s;
+    background-color: #F2F2F2;
+}
 @media(hover: hover) and (pointer: fine) {
     .FirstAnswer:hover{
         background-color: #000000b3;
@@ -65,22 +116,6 @@
         color: #ffffff;
     
     }
-}
-
-.SecondAnswer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    height: 30%;
-    width: 100%;
-
-    border-radius: 40px;
-    margin-bottom: 20px;
-    cursor: pointer;
-
-    transition: 0.3s;
-    background-color: #F2F2F2;
 }
 
 
