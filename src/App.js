@@ -83,6 +83,12 @@ function App() {
       margin:auto;
       padding-top: 5vh;
     `
+    const KakaoAdfitArea = styled.div`
+      width: 300px;
+      height: 250px;
+      margin: auto;
+      margin-top: 5vh;
+    `
     
     return(
       <div>
@@ -94,8 +100,9 @@ function App() {
               <TitleArea>나의 신화 속 사랑 유형 알아보기</TitleArea>
               <SubTitleArea>신화는 우리의 삶과 맞닿아있습니다. <br></br> 여러분은 어떤 신의 사랑을 하고 있을까요?</SubTitleArea>
               <StartButton onClick={() => {window.location.href = '/test'}}>시작하기</StartButton>
+              <KakaoAdfitArea className="adfit">gk</KakaoAdfitArea>
             </MainPicArea>
-            <div className = "adfit"></div>
+            
           </BrowserApp>
         </Route>
         <Route exact path="/result">
@@ -115,7 +122,12 @@ function App() {
       margin:auto;
       padding-top: 5vh;
     `
-    
+    const KakaoAdfitArea = styled.div`
+      width: 300px;
+      height: 250px;
+      margin: auto;
+      margin-top: 5vh;
+    `
     return(
       <div>
         
@@ -126,8 +138,9 @@ function App() {
               <TitleArea>나의 신화 속 사랑 유형 알아보기</TitleArea>
               <SubTitleArea>신화는 우리의 삶과 맞닿아있습니다. <br></br> 여러분은 어떤 신의 사랑을 하고 있을까요?</SubTitleArea>
               <StartButton onClick={() => {window.location.href = '/test'}}>시작하기</StartButton>
+              <KakaoAdfitArea className="adfit"></KakaoAdfitArea>
             </MainPicArea>
-            <div className = "adfit"></div>
+            
           </MobileBrowserApp>
         </Route>
         <Route exact path="/result">
