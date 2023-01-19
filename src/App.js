@@ -7,6 +7,7 @@ import './App.css';
 import {isBrowser, isMobile} from "react-device-detect";
 import {useEffect } from "react";
 import characterResult from "./characterResult";
+import kakaoAdfit from "./pages/kakaoAdfit";
 
 function App() {
   function setScreenSize() {
@@ -15,6 +16,18 @@ function App() {
   }
   useEffect(() => {
     setScreenSize();
+    let ins = document.createElement('ins');
+    let scr = document.createElement('script');
+    ins.className = 'kakao_ad_area';
+    ins.style = "display:none; width:100%;";
+    scr.async = 'true';
+    scr.type = "text/javascript";
+    scr.src = "//t1.daumcdn.net/kas/static/ba.min.js";
+    ins.setAttribute('data-ad-width','300');
+    ins.setAttribute('data-ad-height','250');
+    ins.setAttribute('data-ad-unit','DAN-fAXiJ2rJLl5H09SG');
+    document.querySelector('.adfit').appendChild(ins);
+    document.querySelector('.adfit').appendChild(scr);
   });
 
   const MainPicArea = styled.div`
@@ -70,6 +83,7 @@ function App() {
       margin:auto;
       padding-top: 5vh;
     `
+    
     return(
       <div>
         
@@ -81,10 +95,9 @@ function App() {
               <SubTitleArea>신화는 우리의 삶과 맞닿아있습니다. <br></br> 여러분은 어떤 신의 사랑을 하고 있을까요?</SubTitleArea>
               <StartButton onClick={() => {window.location.href = '/test'}}>시작하기</StartButton>
             </MainPicArea>
+            <div className = "adfit"></div>
           </BrowserApp>
         </Route>
-        
-
         <Route exact path="/result">
           <Result />
         </Route>
@@ -114,10 +127,9 @@ function App() {
               <SubTitleArea>신화는 우리의 삶과 맞닿아있습니다. <br></br> 여러분은 어떤 신의 사랑을 하고 있을까요?</SubTitleArea>
               <StartButton onClick={() => {window.location.href = '/test'}}>시작하기</StartButton>
             </MainPicArea>
+            <div className = "adfit"></div>
           </MobileBrowserApp>
         </Route>
-        
-
         <Route exact path="/result">
           <Result />
         </Route>

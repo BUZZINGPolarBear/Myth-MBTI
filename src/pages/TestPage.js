@@ -1,12 +1,28 @@
 import {useRef, useState} from 'react';
 import questions from "../questions";
 import styles from './css/TestPage.module.css';
+import {useEffect } from "react";
 
 
 
 function Test(){
     let [questionNumber, setQuestionNumber] = useState(0);
-    const percentageBar = useRef(null);
+    const percentageBar = useRef(null); 
+    useEffect(() => {
+        let ins = document.createElement('ins');
+        let scr = document.createElement('script');
+        ins.className = 'kakao_ad_area';
+        ins.style = "display:none; width:100%;";
+        scr.async = 'true';
+        scr.type = "text/javascript";
+        scr.src = "//t1.daumcdn.net/kas/static/ba.min.js";
+        ins.setAttribute('data-ad-width','300');
+        ins.setAttribute('data-ad-height','250');
+        ins.setAttribute('data-ad-unit','DAN-fAXiJ2rJLl5H09SG');
+        document.querySelector('.adfit').appendChild(ins);
+        document.querySelector('.adfit').appendChild(scr);
+      });
+    
 
     const firstAnswerClicked = () => {
         if(questionNumber === 0) localStorage.clear();
@@ -54,6 +70,7 @@ function Test(){
     }
     return(
         <div className={styles.App}>
+            <div className = "adfit"></div>
             <div className={styles.MainQuestion}>
                 <div className={styles.Question}>{questions.questions[questionNumber].question}</div>
             </div>
@@ -73,6 +90,7 @@ function Test(){
                 
             </div>
             <div className={styles.Percentage}>{questionNumber+1}/12</div>
+            <div className = "adfit"></div>
         </div>   
     )
 }
