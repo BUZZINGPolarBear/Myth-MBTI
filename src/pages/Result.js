@@ -33,6 +33,49 @@ function getCharacterId(){
     let t = Number(localStorage.getItem('t'));
     let p = Number(localStorage.getItem('p'));
 
+    let not_hj = 0;
+    let not_jj = 0;
+    let not_b = 0;
+    let not_realistic = 0;
+    let not_hs = 0;
+
+    if(hj < 0) not_hj = -hj;
+    if(jj < 0) not_jj = -jj;
+    if(b < 0) not_b = -b;
+    if(realistic < 0) not_realistic = -realistic;
+    if(hs < 0) not_hs = -hs;
+
+    var makeResult = [
+        {category: 'hj', value: hj},
+        {category: 'jj', value: jj},
+        {category: 'b', value: b},
+        {category: 'realistic', value: realistic},
+        {category: 'hs', value: hs},
+        {category: 'not_hj', value: not_hj},
+        {category: 'not_jj', value: not_jj},
+        {category: 'not_b', value: not_b},
+        {category: 'not_realistic', value: not_realistic},
+        {category: 'not_hs', value: not_hs}
+    ]
+
+    //내림차순 정렬
+    var sortValue = "value";
+    makeResult.sort(function(a, b){
+        return b[sortValue] - a[sortValue];
+    });
+
+    var firstVal = makeResult[0].category;
+    var secondVal = makeResult[1].category;
+
+    if((firstVal === 'hj' && secondVal==='hs') || (firstVal === 'hs' && secondVal === 'hj')) return 2;
+    if((firstVal === 'jj' && secondVal==='realistic') || (firstVal === 'realistic' && secondVal === 'jj')) return 4;
+    if((firstVal === 'b' && secondVal==='jj') || (firstVal === 'jj' && secondVal === 'b')) return 5;
+    if((firstVal === 'jj' && secondVal==='not_realistic') || (firstVal === 'not_realistic' && secondVal === 'jj')) return 1;
+    if((firstVal === 'jj' && secondVal==='not_hs') || (firstVal === 'not_hs' && secondVal === 'jj')) return 0;
+    if((firstVal === 'hs' && secondVal==='not_realistic') || (firstVal === 'not_realistic' && secondVal === 'hs')) return 6;
+    if((firstVal === 'hs' && secondVal==='realistic') || (firstVal === 'realistic' && secondVal === 'hs')) return 7;
+
+
     let threshold = (hj+jj+b+realistic+hs)/5;
     console.log(threshold)
 
