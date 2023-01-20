@@ -2,11 +2,13 @@
 import {Route} from "react-router-dom";
 import Result from "./pages/Result";
 import Test from "./pages/TestPage";
+import NotFound from "./pages/NotFound";
 import styled from 'styled-components';
 import './App.css';
 import {isBrowser, isMobile} from "react-device-detect";
 import {useEffect } from "react";
 import characterResult from "./characterResult";
+
 
 function App() {
   function setScreenSize() {
@@ -91,6 +93,9 @@ function App() {
         <Route exact path="/test">
           <Test />
         </Route>
+        <Route path="/*">
+          <NotFound />
+        </Route>
       </div>
     )
   }
@@ -123,6 +128,9 @@ function App() {
         </Route>
         <Route exact path="/test">
           <Test />
+        </Route>
+        <Route path="/*">
+          <NotFound />
         </Route>
       </div>
     )
