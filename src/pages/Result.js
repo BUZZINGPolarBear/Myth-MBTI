@@ -3,10 +3,8 @@ import characterResult from "../characterResult";
 import styles from './css/Result.module.css';
 import styled from 'styled-components';
 import questions from "../questions";
-import {BrowserView, MobileView, isBrowser, isMobile} from "react-device-detect";
-import {createStore} from 'redux';
-import {Provider, userSelector, useDispatch} from 'react-redux';
-import { readBuilderProgram } from 'typescript';
+import {isBrowser, isMobile} from "react-device-detect";
+import {CopyToClipboard} from "react-copy-to-clipboard/src";
 
 let characterId=0;
 let mythDetail = false;
@@ -250,6 +248,10 @@ function Result(){
             background-color: #f5f5f5;
             border-radius: 20px;
         `
+        const copyResult = (e) => {
+            e.preventDefault();
+            e.clipboardData.setData('text', 'http://my-mythology-character.site/result?'+characterId);
+        }
     if(isMobile){
         return(
             <div className={styles.App}>
@@ -297,7 +299,9 @@ function Result(){
                 </div>      
                  <FeatureBtnArea>
                     <ReTestBtn onClick={()=>{window.location.href="/"}}>테스트 다시하기</ReTestBtn>
-                    <ReTestBtn>링크 공유하기</ReTestBtn>
+                    <CopyToClipboard text={`http://my-mythology-character.site/result?${characterId}`} onCopy={() => alert("클립보드에 복사되었습니다.")}>
+                        <ReTestBtn>결과 링크 복사하기</ReTestBtn>
+                    </CopyToClipboard>
                  </FeatureBtnArea>
                  <ShowMythHistory />
             </div>
@@ -362,7 +366,9 @@ function Result(){
                 </div>      
                 <FeatureBtnArea>
                     <ReTestBtn onClick={()=>{window.location.href="/"}}>테스트 다시하기</ReTestBtn>
-                    <ReTestBtn>링크 공유하기</ReTestBtn>
+                    <CopyToClipboard text={`http://my-mythology-character.site/result?${characterId}`} onCopy={() => alert("클립보드에 복사되었습니다.")}>
+                        <ReTestBtn>결과 링크 복사하기</ReTestBtn>
+                    </CopyToClipboard>
                  </FeatureBtnArea>
                  <ShowMythHistory />
             </BrowserApp>            
