@@ -75,7 +75,7 @@ function Test(){
       height: 250px;
       margin: auto;
       margin-top: 10vh;
-      background-color: #000;
+      background-color: #f2f2f2;
     `
     return(
         
