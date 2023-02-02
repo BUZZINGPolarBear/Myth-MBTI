@@ -7,6 +7,15 @@
 
 이 앱을 통해 본인이 어떤 신과 비슷한 사랑을 하는지 알아볼 수 있습니다.
 
+---
+
+## 개발기
+
+블로그에서 읽어보실 수 있습니다. 연재중입니다.
+https://hipolarbear.tistory.com/category/%EA%B0%9C%EB%B0%9C%EA%B8%B0/%EB%A6%AC%EC%95%A1%ED%8A%B8%20MBTI%ED%8E%98%EC%9D%B4%EC%A7%80%20%EA%B0%9C%EB%B0%9C%EA%B8%B0
+
+---
+
 ## 인물 유형
 
 **상대를 기다리기만 하는 문도령**
