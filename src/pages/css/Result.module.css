@@ -189,9 +189,10 @@ ul{
 
     margin-top: 5vh;
        
-    background-color: #000;
-    color: #fff;
-    border-radius: 10px;
+    background-color: #F2F2f2;
+    color: rgb(28, 28, 28);
+    border-top-left-radius: 60px;
+    border-top-right-radius: 60px;
 
     animation-name: browserJumper;
     animation-duration: 3s;
@@ -200,6 +201,7 @@ ul{
 
 .FullStoryTitle{
     width: 100%;
+    line-height: 1.3em;
     height: max-content;
     text-align: center;
     font-size: bolder;
@@ -218,7 +220,7 @@ ul{
 
 .BrowserInnerStory{
     min-height: 100vh;
-    margin-top: 10vh;
+    margin-top: 2vh;
     line-height: 1.6em;
     display: none;
     text-align: left;
@@ -226,6 +228,10 @@ ul{
 
     font-size: 1.1em;
     z-index: 999;
+}
+p{
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 @keyframes browserJumper {

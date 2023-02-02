@@ -188,8 +188,6 @@ function ShowMythHistory(){
         else{
             setShowFullHistoryMsg('더보기');
             mythDetail = false;
-            // if(isMobile)fullMythDiv.current.style.top = '95vh';
-            // if(isBrowser)fullMythDiv.current.style.top = '100vh';
             fullMythDiv.current.style.position = 'relative';
             showFullBtnClicked.current.style.display = 'none';
         }
@@ -203,7 +201,7 @@ function ShowMythHistory(){
         return(
             <div className={styles.FullMythStory} ref={fullMythDiv} >
                 <div className={styles.FullStoryTitle} onClick={onShowFullBtnClicked} ref={fullStoryTitle}>
-                    <>{titleArrow} <br></br> {title}</>
+                    <>{titleArrow} <br></br><br></br> {title}</>
                 </div>
                 <div className={styles.InnerStory} ref={showFullBtnClicked} dangerouslySetInnerHTML={{__html: characterResult[characterId].story}}>
                     
