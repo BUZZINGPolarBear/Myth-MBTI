@@ -171,8 +171,8 @@ ul{
     
     margin-top: 3vh;
        
-    background-color: #000;
-    color: #fff;
+    background-color: #f2f2f2;
+    color: rgb(10, 10, 10);
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
 
@@ -208,12 +208,14 @@ ul{
 }
 
 .InnerStory{
-    margin-top: 10vh;
+    margin-top: 2vh;
     line-height: 1.6em;
     display: none;
     text-align: left;
     word-break: keep-all;
 
+    padding-left: 5px;
+    padding-right: 5px;
     font-size: 1.1em;
     z-index: 999;
 }
