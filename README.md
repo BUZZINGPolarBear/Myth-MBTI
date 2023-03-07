@@ -18,7 +18,7 @@ https://hipolarbear.tistory.com/category/%EA%B0%9C%EB%B0%9C%EA%B8%B0/%EB%A6%AC%E
 
 서버 유지비가 많이 들어 Astrochaser.com에 슬쩍 같이 호스팅합니다... ㅎㅎ..
 
-http://astrochaser.com:8080/
+http://my-mythology-character.site:8080/
 
 ---
 
